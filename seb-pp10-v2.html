@@ -932,7 +932,7 @@ const SearchHero = () => {
 
         <div className="hot-kw">
           <span className="hot-kw-label">熱門搜尋：</span>
-          {HOT_KEYWORDS.map(k => <button key={k} className="hot-kw-chip">{k}</button>)}
+          {HOT_KEYWORDS.map(k => <button key={k} onClick={() => window.location.href="seb-list.html"} className="hot-kw-chip">{k}</button>)}
         </div>
       </div>
     </div>
