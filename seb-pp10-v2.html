@@ -1,0 +1,1222 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<title>運動旅遊 PP1.0 · AsiaYo SEB</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>/* =======================================================================
+   AsiaYo Design System — Colors & Type
+   Extracted from `ui-library-master/src/theme/**`
+   ======================================================================= */
+
+/* ---- Webfonts: Noto Sans family (per-locale) + Sarabun (Thai) via Google Fonts.
+   AsiaYo uses locale-specific Noto Sans variants; Sarabun for TH.
+   Scale is identical across locales: H1/48, H2/32, H3/24, H4/20, H5/16, H6/14 (all 700);
+   M1/16, M2/14 (500); P1/16, P2/14, P3/12 (400). */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+HK:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Sarabun:wght@400;500;700&display=swap');
+
+/* ---- Webfonts: AsiaYo icon fonts (proprietary, loaded from brand CDN) */
+@font-face {
+  font-family: 'Ay-Icons';
+  src: url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Icons.woff?bskj5z') format('woff'),
+       url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Icons.ttf?bskj5z') format('truetype');
+  font-display: block;
+}
+@font-face {
+  font-family: 'Ay-Web-Icons-Line';
+  src: url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Web-Icons-Line.woff?7x7r1r') format('woff'),
+       url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Web-Icons-Line.ttf?7x7r1r') format('truetype');
+  font-display: block;
+}
+@font-face {
+  font-family: 'Ay-Web-Icons-Solid';
+  src: url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Web-Icons-Solid.woff?lw0ri6') format('woff'),
+       url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Web-Icons-Solid.ttf?lw0ri6') format('truetype');
+  font-display: block;
+}
+
+/* ---- Body font: Noto Sans TC (Google Fonts — substitution; real product uses system CJK) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+:root {
+  /* ---------- NEUTRAL (shared) ---------- */
+  --ay-neutral-0: #ffffff;
+  --ay-neutral-1: #fafafa;
+  --ay-neutral-2: #f5f5f5;
+  --ay-neutral-3: #e8e8e8;
+  --ay-neutral-4: #d9d9d9;
+  --ay-neutral-5: #bfbfbf;
+  --ay-neutral-6: #8c8c8c;
+  --ay-neutral-7: #595959;
+  --ay-neutral-8: #262626;
+  --ay-neutral-9: #000000;
+
+  /* ---------- SUCCESS ---------- */
+  --ay-success-0: #efffef;
+  --ay-success-1: #ddf7dc;
+  --ay-success-2: #baf0b9;
+  --ay-success-3: #a0e09e;
+  --ay-success-4: #60cc5d;
+  --ay-success-5: #04ad00;
+  --ay-success-6: #088c37;
+  --ay-success-7: #016628;
+  --ay-success-8: #00401b;
+  --ay-success-9: #001a0b;
+
+  /* ---------- WARNING ---------- */
+  --ay-warning-0: #fffce6;
+  --ay-warning-1: #fff0a3;
+  --ay-warning-2: #ffe47a;
+  --ay-warning-3: #ffd752;
+  --ay-warning-4: #ffc629;
+  --ay-warning-5: #ffb300;
+  --ay-warning-6: #d99100;
+  --ay-warning-7: #b37100;
+  --ay-warning-8: #8c5400;
+  --ay-warning-9: #663a00;
+
+  /* ---------- DANGER ---------- */
+  --ay-danger-0: #fff3eb;
+  --ay-danger-1: #ffd8c2;
+  --ay-danger-2: #ffbb99;
+  --ay-danger-3: #ff9b70;
+  --ay-danger-4: #ff7847;
+  --ay-danger-5: #f4511e;
+  --ay-danger-6: #cf350e;
+  --ay-danger-7: #a81f03;
+  --ay-danger-8: #821100;
+  --ay-danger-9: #5c0900;
+
+  /* ---------- INDIGO (illustration / secondary accent) ---------- */
+  --ay-indigo-0: #eceff1;
+  --ay-indigo-1: #cfd8dc;
+  --ay-indigo-2: #b0bec5;
+  --ay-indigo-3: #90a4ae;
+  --ay-indigo-4: #78909c;
+  --ay-indigo-5: #607d8b;
+  --ay-indigo-6: #546e7a;
+  --ay-indigo-7: #455a64;
+  --ay-indigo-8: #37474f;
+  --ay-indigo-9: #263238;
+
+  /* ---------- USAGE: MOMO (co-brand) ---------- */
+  --ay-momo-0: #D62872;
+  --ay-momo-1: #B0195F;
+  --ay-momo-2: #8A0C4B;
+
+  /* ---------- CP (Consumer Product, traveller-facing) primary: cyan/blue ---------- */
+  --ay-cp-primary-0: #f0fdff;
+  --ay-cp-primary-1: #c7f7ff;
+  --ay-cp-primary-2: #99e6f7;
+  --ay-cp-primary-3: #6ccfeb;
+  --ay-cp-primary-4: #43b7de;
+  --ay-cp-primary-5: #1e9fd2;  /* CP main.base */
+  --ay-cp-primary-6: #0f7aab;
+  --ay-cp-primary-7: #055885;
+  --ay-cp-primary-8: #003a5e;
+  --ay-cp-primary-9: #002138;
+
+  /* ---------- HOST (supplier portal) primary: teal ---------- */
+  --ay-host-primary-0: #E8F7F6;
+  --ay-host-primary-1: #BCE9E4;
+  --ay-host-primary-2: #90DAD3;
+  --ay-host-primary-3: #63CBC2;
+  --ay-host-primary-4: #37BDB0;
+  --ay-host-primary-5: #21B6A8;
+  --ay-host-primary-6: #20AEA1;  /* Host main.base */
+  --ay-host-primary-7: #1DA094;
+  --ay-host-primary-8: #198C82;
+  --ay-host-primary-9: #15756C;
+
+  /* ---------- SEMANTIC ---------- */
+  /* By default we expose CP theme. Flip via [data-ay-theme="host"] on html/body. */
+  --ay-primary-0: var(--ay-cp-primary-0);
+  --ay-primary-1: var(--ay-cp-primary-1);
+  --ay-primary-2: var(--ay-cp-primary-2);
+  --ay-primary-3: var(--ay-cp-primary-3);
+  --ay-primary-4: var(--ay-cp-primary-4);
+  --ay-primary-5: var(--ay-cp-primary-5);
+  --ay-primary-6: var(--ay-cp-primary-6);
+  --ay-primary-7: var(--ay-cp-primary-7);
+  --ay-primary-8: var(--ay-cp-primary-8);
+  --ay-primary-9: var(--ay-cp-primary-9);
+  --ay-main: var(--ay-cp-primary-5);
+
+  --ay-fg-1: var(--ay-neutral-8); /* headings */
+  --ay-fg-2: var(--ay-neutral-7); /* body */
+  --ay-fg-3: var(--ay-neutral-6); /* muted */
+  --ay-fg-4: var(--ay-neutral-5); /* placeholder / disabled */
+  --ay-bg-surface: var(--ay-neutral-0);
+  --ay-bg-subtle:  var(--ay-neutral-1);
+  --ay-bg-muted:   var(--ay-neutral-2);
+  --ay-border:     var(--ay-neutral-5);
+  --ay-divider:    var(--ay-neutral-3);
+
+  /* ---------- TYPOGRAPHY ---------- */
+  /* Default locale is TW (繁中). Override by setting lang="en|hk|sc|jp|kr|th" on
+     <html> or a subtree, OR by setting --ay-font-sans directly on a container. */
+  --ay-font-sans: 'Noto Sans TC', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'PingFang TC', 'Microsoft JhengHei', 'Segoe UI', Roboto, sans-serif;
+
+  /* ---- Type scale (from Zeroheight / Ark Design System) ---- */
+  /* Headings — Main title */
+  --ay-fs-h1: 48px;  /* H1 / 700 */
+  --ay-fs-h2: 32px;  /* H2 / 700 */
+  --ay-fs-h3: 24px;  /* H3 / 700 */
+  --ay-fs-h4: 20px;  /* H4 / 700 */
+  --ay-fs-h5: 16px;  /* H5 / 700 */
+  --ay-fs-h6: 14px;  /* H6 / 700 */
+  /* Sub-title — Medium */
+  --ay-fs-m1: 16px;  /* M1 / 500 */
+  --ay-fs-m2: 14px;  /* M2 / 500 */
+  /* Body — Paragraph */
+  --ay-fs-p1: 16px;  /* P1 / 400 */
+  --ay-fs-p2: 14px;  /* P2 / 400 */
+  --ay-fs-p3: 12px;  /* P3 / 400 */
+
+  /* Legacy aliases kept for existing components (Alert, Tag, Button …) */
+  --ay-fs-0: 12px;  /* = P3 */
+  --ay-fs-1: 14px;  /* = H6 / M2 / P2 */
+  --ay-fs-2: 16px;  /* = H5 / M1 / P1 */
+  --ay-fs-3: 20px;  /* = H4 */
+  --ay-fs-4: 24px;  /* = H3 */
+  --ay-fs-5: 32px;  /* = H2 */
+  --ay-fs-6: 48px;  /* = H1 */
+
+  --ay-fw-regular: 400;
+  --ay-fw-medium: 500;
+  --ay-fw-bold: 700;
+
+  /* ---------- SPACING (4px base) ---------- */
+  --ay-s-0: 0px;    --ay-s-0-5: 2px;
+  --ay-s-1: 4px;    --ay-s-1-5: 6px;
+  --ay-s-2: 8px;    --ay-s-2-5: 10px;
+  --ay-s-3: 12px;   --ay-s-3-5: 14px;
+  --ay-s-4: 16px;   --ay-s-4-5: 18px;
+  --ay-s-5: 20px;   --ay-s-5-5: 22px;
+  --ay-s-6: 24px;   --ay-s-7: 28px; --ay-s-7-5: 30px;
+  --ay-s-8: 32px;   --ay-s-9: 36px;
+  --ay-s-10: 40px;  --ay-s-11: 44px;
+  --ay-s-12: 48px;  --ay-s-13: 52px;
+  --ay-s-14: 56px;  --ay-s-15: 60px;
+  --ay-s-16: 64px;  --ay-s-18: 72px;
+  --ay-s-20: 80px;
+  --ay-s-xxs: 4px; --ay-s-xs: 8px; --ay-s-s: 16px; --ay-s-m: 24px; --ay-s-l: 48px; --ay-s-xl: 96px;
+
+  /* ---------- RADII ---------- */
+  --ay-r-0: 4px;
+  --ay-r-1: 8px;
+  --ay-r-2: 16px;
+  --ay-r-small: 16px;
+  --ay-r-medium: 20px;
+  --ay-r-large: 24px;
+  --ay-r-pill: 100px;
+
+  /* ---------- SHADOWS (z-stacked, all rgba(0,0,0,.08)) ---------- */
+  --ay-shadow-raised:       0 1px 2px rgba(0, 0, 0, 0.08);
+  --ay-shadow-dropdown:     0 2px 4px rgba(0, 0, 0, 0.08);
+  --ay-shadow-navigation:   0 3px 6px rgba(0, 0, 0, 0.08);
+  --ay-shadow-header:       0 4px 8px rgba(0, 0, 0, 0.08);
+  --ay-shadow-bulletin:     0 5px 10px rgba(0, 0, 0, 0.08);
+  --ay-shadow-flash-notice: 0 6px 12px rgba(0, 0, 0, 0.08);
+  --ay-shadow-modal:        0 7px 14px rgba(0, 0, 0, 0.08);
+  --ay-shadow-dialog:       0 8px 16px rgba(0, 0, 0, 0.08);
+
+  /* ---------- Z-INDICES ---------- */
+  --ay-z-base: 0;        --ay-z-flat: 1;       --ay-z-raised: 2;
+  --ay-z-overlay: 8;     --ay-z-dropdown: 1000;
+  --ay-z-navigation: 1010; --ay-z-header: 1020;
+  --ay-z-bulletin: 1030;   --ay-z-flash-notice: 1040;
+  --ay-z-mask: 1050;       --ay-z-modal: 1060;  --ay-z-dialog: 1070;
+
+  /* ---------- BREAKPOINTS ---------- */
+  --ay-bp-mini-tablet: 768px;
+  --ay-bp-tablet: 992px;
+  --ay-bp-desktop: 1280px;
+}
+
+/* Theme switch: set data-ay-theme="host" on <html> or a container to re-point primary */
+[data-ay-theme='host'] {
+  --ay-primary-0: var(--ay-host-primary-0);
+  --ay-primary-1: var(--ay-host-primary-1);
+  --ay-primary-2: var(--ay-host-primary-2);
+  --ay-primary-3: var(--ay-host-primary-3);
+  --ay-primary-4: var(--ay-host-primary-4);
+  --ay-primary-5: var(--ay-host-primary-5);
+  --ay-primary-6: var(--ay-host-primary-6);
+  --ay-primary-7: var(--ay-host-primary-7);
+  --ay-primary-8: var(--ay-host-primary-8);
+  --ay-primary-9: var(--ay-host-primary-9);
+  --ay-main: var(--ay-host-primary-6);
+}
+
+/* =======================================================================
+   Per-locale font family override. AsiaYo ships locale-specific Noto Sans
+   variants; EN uses the base Noto Sans, TH uses Sarabun. All locales use
+   the same type scale (sizes + weights).
+   ======================================================================= */
+[lang='en'], [lang='en-us'], [lang='en-gb'] {
+  --ay-font-sans: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+[lang='zh-tw'], [lang='zh-Hant-TW'] {
+  --ay-font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+[lang='zh-hk'], [lang='zh-Hant-HK'] {
+  --ay-font-sans: 'Noto Sans HK', -apple-system, BlinkMacSystemFont, 'PingFang HK', 'Microsoft JhengHei', sans-serif;
+}
+[lang='zh-cn'], [lang='zh-Hans-CN'], [lang='zh-Hans'] {
+  --ay-font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+[lang='ja'], [lang='ja-JP'] {
+  --ay-font-sans: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+}
+[lang='ko'], [lang='ko-KR'] {
+  --ay-font-sans: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+[lang='th'], [lang='th-TH'] {
+  --ay-font-sans: 'Sarabun', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* =======================================================================
+   Semantic type classes — mirror the Zeroheight Ark Design System spec.
+   Headings (H1–H6) 700. Sub-titles (M1–M2) 500. Body (P1–P3) 400.
+   Default color is fg-1 for headings/sub-titles, fg-2 for body.
+   ======================================================================= */
+.ay-h1 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h1); font-weight: 700; line-height: 1.25; letter-spacing: -0.005em; }
+.ay-h2 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h2); font-weight: 700; line-height: 1.3;  }
+.ay-h3 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h3); font-weight: 700; line-height: 1.35; }
+.ay-h4 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h4); font-weight: 700; line-height: 1.4;  }
+.ay-h5 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h5); font-weight: 700; line-height: 1.5;  }
+.ay-h6 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h6); font-weight: 700; line-height: 1.55; }
+
+.ay-m1 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-m1); font-weight: 500; line-height: 1.5;  }
+.ay-m2 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-m2); font-weight: 500; line-height: 1.55; }
+
+.ay-p1 { font-family: var(--ay-font-sans); color: var(--ay-fg-2); font-size: var(--ay-fs-p1); font-weight: 400; line-height: 1.6;  }
+.ay-p2 { font-family: var(--ay-font-sans); color: var(--ay-fg-2); font-size: var(--ay-fs-p2); font-weight: 400; line-height: 1.6;  }
+.ay-p3 { font-family: var(--ay-font-sans); color: var(--ay-fg-3); font-size: var(--ay-fs-p3); font-weight: 400; line-height: 1.5;  }
+
+/* Legacy aliases kept so existing components don't break */
+.ay-body       { font-family: var(--ay-font-sans); color: var(--ay-fg-2); font-size: var(--ay-fs-p2); font-weight: 400; line-height: 20px; }
+.ay-body-lg    { font-family: var(--ay-font-sans); color: var(--ay-fg-2); font-size: var(--ay-fs-p1); font-weight: 400; line-height: 24px; }
+.ay-caption    { font-family: var(--ay-font-sans); color: var(--ay-fg-3); font-size: var(--ay-fs-p3); font-weight: 400; line-height: 16px; }
+.ay-title-desktop { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: 20px; font-weight: 700; line-height: 28px; }
+.ay-title-mobile  { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: 16px; font-weight: 500; line-height: 24px; }
+.ay-button-label  { font-family: var(--ay-font-sans); font-size: 14px; font-weight: 500; line-height: 20px; }
+.ay-mono { font-family: 'SFMono-Regular', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; line-height: 20px; color: var(--ay-fg-2); }
+
+/* Icon helper — use with the Ay- fonts */
+.ay-icon {
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+}
+/* Material Symbols Outlined is listed FIRST so in-sandbox rendering works.
+   In production you'd flip the order (or drop Material Symbols) so the
+   proprietary Ay icon fonts from img.asiayo.com take priority. */
+.ay-icon.ay-icon-line  { font-family: 'Material Symbols Outlined', 'Ay-Web-Icons-Line'  !important; }
+.ay-icon.ay-icon-solid { font-family: 'Material Symbols Outlined', 'Ay-Web-Icons-Solid' !important; font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.ay-icon.ay-icon-core  { font-family: 'Material Symbols Outlined', 'Ay-Icons'           !important; }
+</style>
+<style>/* AsiaYo icon font stylesheet — substitution layer
+   Real brand fonts (Ay-Icons · Ay-Web-Icons-Line · Ay-Web-Icons-Solid) live on
+   img.asiayo.com. We sub Material Symbols (Outlined) + a JS remap layer. */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,200..700,0..1,-50..200&display=swap');
+
+.ay-icon {
+  font-family: 'Material Symbols Outlined', system-ui, sans-serif;
+  font-weight: 400; font-style: normal; font-size: inherit;
+  display: inline-block; line-height: 1; text-transform: none;
+  letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  vertical-align: middle;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.ay-icon-solid { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,200..700,0..1,-50..200&display=swap');
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--ay-neutral-1); font-family: var(--ay-font-sans); color: var(--ay-fg-2); -webkit-font-smoothing: antialiased; }
+.ay-icon { font-family: 'Material Symbols Outlined', system-ui; font-weight: 400; display: inline-block; line-height: 1; vertical-align: middle; font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+img, svg { display: block; }
+button { font-family: inherit; }
+
+/* ============ HEADER ============ */
+.ay-header { background: #fff; border-bottom: 1px solid var(--ay-neutral-3); }
+.ay-header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 24px; }
+.ay-header img.logo { height: 28px; }
+.ay-header nav { display: flex; gap: 22px; }
+.ay-header nav a { font-size: 15px; color: var(--ay-fg-2); cursor: pointer; text-decoration: none; }
+.ay-header nav a.active { color: var(--ay-cp-primary-5); font-weight: 700; position: relative; }
+.ay-header nav a.active::after { content:''; position:absolute; left:0; right:0; bottom:-19px; height:2px; background: var(--ay-cp-primary-5); }
+.ay-header .spacer { flex: 1; }
+.ay-header .lang { font-size: 13px; color: var(--ay-fg-3); display: inline-flex; align-items: center; gap: 4px; }
+.ay-header .login {
+  padding: 7px 16px; border-radius: 4px; font-size: 14px; cursor: pointer;
+  background: #fff; color: var(--ay-cp-primary-5); border: 1px solid var(--ay-cp-primary-5); font-weight: 500;
+}
+
+/* ============ HERO SEARCH ============ */
+.hero {
+  position: relative; min-height: 480px;
+  background:
+    linear-gradient(180deg, rgba(0,30,55,.55) 0%, rgba(0,30,55,.7) 100%),
+    url('https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?w=1600&auto=format&fit=crop&q=70') center/cover no-repeat,
+    radial-gradient(circle at 25% 35%, #1e9fd2 0%, #055885 50%, #03304b 100%);
+  color: #fff;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(800px 300px at 80% 70%, rgba(255,255,255,.08), transparent 70%),
+    radial-gradient(600px 220px at 15% 80%, rgba(255,255,255,.06), transparent 70%);
+}
+.hero-inner { max-width: 1200px; margin: 0 auto; padding: 56px 24px 100px; position: relative; }
+.hero h1 {
+  margin: 0 0 12px; font-size: 40px; font-weight: 700; letter-spacing: .5px; line-height: 1.25;
+  text-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+.hero .lede {
+  margin: 0; font-size: 17px; opacity: .92; max-width: 720px; line-height: 1.7;
+  text-shadow: 0 1px 6px rgba(0,0,0,.25);
+}
+
+/* search box */
+.search-box {
+  margin-top: 36px; background: #fff; border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.18);
+  overflow: hidden;
+}
+.search-tabs {
+  display: flex; gap: 0; padding: 0 8px;
+  border-bottom: 1px solid var(--ay-neutral-2);
+  overflow-x: auto; scrollbar-width: none;
+}
+.search-tabs::-webkit-scrollbar { display: none; }
+.search-tab {
+  flex-shrink: 0; padding: 14px 18px;
+  background: none; border: none; cursor: pointer;
+  font-size: 15px; color: var(--ay-fg-2); font-weight: 500;
+  border-bottom: 3px solid transparent; margin-bottom: -1px;
+  display: inline-flex; align-items: center; gap: 7px;
+  transition: color 150ms, border-color 150ms;
+}
+.search-tab:hover { color: var(--ay-cp-primary-5); }
+.search-tab.active { color: var(--ay-cp-primary-5); font-weight: 700; border-bottom-color: var(--ay-cp-primary-5); }
+.search-tab .badge-new { font-size: 10px; font-weight: 700; color: #fff; background: var(--ay-danger-5); padding: 1px 5px; border-radius: 2px; margin-left: 2px; }
+
+.search-fields {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr auto;
+  gap: 0; padding: 8px;
+}
+.field {
+  padding: 10px 16px; border-radius: 8px; cursor: pointer;
+  display: flex; flex-direction: column; gap: 4px;
+  transition: background 150ms;
+  border: 1px solid transparent;
+  min-width: 0;
+}
+.field:hover { background: var(--ay-cp-primary-0); }
+.field + .field { border-left: 1px solid var(--ay-neutral-2); }
+.field:hover + .field, .field:hover { border-left-color: transparent; }
+.field .label { font-size: 12px; color: var(--ay-fg-3); display: inline-flex; align-items: center; gap: 5px; }
+.field .label .ay-icon { font-size: 14px; color: var(--ay-cp-primary-5); }
+.field .value { font-size: 16px; font-weight: 500; color: var(--ay-fg-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.field .value.placeholder { color: var(--ay-fg-3); font-weight: 400; }
+.search-cta {
+  margin: 8px; padding: 0 36px;
+  background: var(--ay-cp-primary-5); color: #fff;
+  border: none; border-radius: 8px; cursor: pointer;
+  font-size: 17px; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background 150ms;
+}
+.search-cta:hover { background: var(--ay-cp-primary-6); }
+
+/* hot keywords */
+.hot-kw {
+  margin-top: 18px; display: flex; align-items: center; gap: 10px;
+  font-size: 14px; flex-wrap: wrap;
+}
+.hot-kw-label { opacity: .85; }
+.hot-kw-chip {
+  padding: 4px 12px; background: rgba(255,255,255,.18); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.3); border-radius: 100px;
+  color: #fff; font-size: 13px; cursor: pointer;
+  transition: background 150ms;
+}
+.hot-kw-chip:hover { background: rgba(255,255,255,.3); }
+
+/* ============ SECTION SHELL ============ */
+.section { max-width: 1200px; margin: 0 auto; padding: 56px 24px 0; }
+.section.tight { padding-top: 24px; }
+.section.last { padding-bottom: 56px; }
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 20px; gap: 16px; flex-wrap: wrap; }
+.section-head h2 { font-size: 26px; font-weight: 700; color: var(--ay-fg-1); margin: 0 0 4px; }
+.section-head .sub { font-size: 14px; color: var(--ay-fg-3); }
+.section-head .more { background: none; border: none; color: var(--ay-cp-primary-5); cursor: pointer; font-size: 14px; display: inline-flex; align-items: center; gap: 2px; }
+
+/* ============ BANNER CAROUSEL ============ */
+.banner-row {
+  margin-top: -64px; position: relative; z-index: 5;
+  max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 24px 0;
+}
+.hero-carousel { position: relative; height: 240px; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.2); }
+.slides { display: flex; height: 100%; transition: transform 500ms ease; }
+.slide {
+  flex: 0 0 100%; height: 100%; position: relative;
+  display: flex; align-items: center; padding: 0 56px;
+  color: #fff;
+  background-size: cover; background-position: center;
+}
+.slide .badge {
+  font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 4px;
+  background: var(--ay-danger-5); color: #fff; display: inline-block; margin-bottom: 10px;
+}
+.slide .t { font-size: 28px; font-weight: 700; margin: 0 0 8px; max-width: 540px; line-height: 1.3; }
+.slide .s { font-size: 15px; opacity: .9; max-width: 540px; line-height: 1.6; }
+.arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,.85); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ay-fg-1); transition: background 150ms;
+}
+.arrow:hover { background: #fff; }
+.arrow.prev { left: 16px; } .arrow.next { right: 16px; }
+.dots {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px;
+}
+.dots button {
+  width: 8px; height: 8px; border-radius: 50%; border: none; background: rgba(255,255,255,.5); cursor: pointer; padding: 0;
+  transition: width 150ms, background 150ms;
+}
+.dots button.active { background: #fff; width: 24px; border-radius: 4px; }
+
+/* ============ BROWSE BY FEATURE (wamazing-style) ============ */
+.feature-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+}
+.feature-card {
+  position: relative; aspect-ratio: 5 / 3; border-radius: 12px;
+  overflow: hidden; cursor: pointer;
+  background-size: cover; background-position: center;
+}
+.feature-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.7) 100%);
+  transition: background 200ms;
+}
+.feature-card:hover::after { background: linear-gradient(180deg, transparent 10%, rgba(0,0,0,.78) 100%); }
+.feature-card .label {
+  position: absolute; left: 18px; bottom: 14px; right: 18px; z-index: 2;
+  color: #fff;
+}
+.feature-card .label h4 { margin: 0 0 4px; font-size: 18px; font-weight: 700; }
+.feature-card .label p { margin: 0; font-size: 12px; opacity: .9; }
+.feature-card .badge-new {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  font-size: 10px; font-weight: 700; color: #fff; background: var(--ay-danger-5);
+  padding: 2px 7px; border-radius: 3px;
+}
+
+/* ============ CALENDAR / UPCOMING (placeholder) ============ */
+.calendar-placeholder {
+  background: linear-gradient(135deg, var(--ay-cp-primary-0), #fff);
+  border: 2px dashed var(--ay-cp-primary-3);
+  border-radius: 12px; padding: 40px 32px;
+  display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+}
+.calendar-placeholder .ic { font-size: 48px; color: var(--ay-cp-primary-5); margin-bottom: 12px; }
+.calendar-placeholder h3 { margin: 0 0 8px; font-size: 22px; color: var(--ay-fg-1); font-weight: 700; }
+.calendar-placeholder p { margin: 0; font-size: 14px; color: var(--ay-fg-2); line-height: 1.7; }
+.calendar-placeholder .stub-tag { display: inline-block; padding: 3px 10px; background: var(--ay-cp-primary-1); color: var(--ay-cp-primary-7); border-radius: 4px; font-size: 12px; font-weight: 700; margin-bottom: 10px; }
+.calendar-placeholder .visual { display: flex; gap: 6px; }
+.calendar-placeholder .month-stub { width: 60px; padding: 14px 10px; border-radius: 8px; background: #fff; box-shadow: var(--ay-shadow-dropdown); text-align: center; }
+.calendar-placeholder .month-stub .m { font-size: 11px; color: var(--ay-fg-3); }
+.calendar-placeholder .month-stub .n { font-size: 22px; font-weight: 700; color: var(--ay-cp-primary-5); }
+.calendar-placeholder .month-stub .lbl { font-size: 10px; color: var(--ay-fg-3); margin-top: 2px; }
+
+/* card grid for promo (4 cols x 2 rows) */
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-4 .ev-card { flex: none; }
+@media (max-width: 1000px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .grid-4 { grid-template-columns: 1fr; } }
+
+/* ============ SUBTABS (pill) ============ */
+.subtabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.subtab {
+  padding: 7px 18px; font-size: 14px; color: var(--ay-fg-2); font-weight: 500;
+  cursor: pointer; background: #fff; border: 1px solid var(--ay-neutral-4);
+  border-radius: 100px; transition: all 150ms;
+}
+.subtab:hover { color: var(--ay-cp-primary-5); border-color: var(--ay-cp-primary-5); }
+.subtab.active { color: #fff; background: var(--ay-cp-primary-5); border-color: var(--ay-cp-primary-5); }
+
+/* ============ CARD SCROLLER ============ */
+.scroller-wrap { position: relative; }
+.scroller {
+  display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none;
+  scroll-snap-type: x mandatory; padding-bottom: 8px;
+  margin: 0 -24px; padding-left: 24px; padding-right: 24px;
+}
+.scroller::-webkit-scrollbar { display: none; }
+.scroll-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%;
+  background: #fff; border: 1px solid var(--ay-neutral-3); cursor: pointer;
+  box-shadow: var(--ay-shadow-dropdown);
+  display: flex; align-items: center; justify-content: center; color: var(--ay-fg-1);
+  z-index: 3;
+}
+.scroll-arrow.prev { left: -16px; } .scroll-arrow.next { right: -16px; }
+.scroll-arrow:disabled { opacity: 0; pointer-events: none; }
+
+/* event card */
+.ev-card {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  box-shadow: var(--ay-shadow-dropdown); cursor: pointer;
+  display: flex; flex-direction: column;
+  transition: transform 150ms, box-shadow 150ms;
+}
+.ev-card.in-scroller {
+  flex: 0 0 280px; scroll-snap-align: start;
+}
+.ev-card:hover { transform: translateY(-2px); box-shadow: var(--ay-shadow-raised); }
+.ev-card .img { height: 168px; position: relative; background-size: cover; background-position: center; background-color: var(--ay-neutral-2); }
+.ev-card .ribbon {
+  position: absolute; top: 12px; left: 12px;
+  padding: 4px 10px; border-radius: 4px;
+  background: var(--ay-danger-5); color: #fff;
+  font-size: 12px; font-weight: 700;
+}
+.ev-card .ribbon.warm { background: var(--ay-warning-5); }
+.ev-card .ribbon.early { background: var(--ay-cp-primary-5); }
+.ev-card .fav {
+  position: absolute; top: 10px; right: 10px;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(255,255,255,.9); display: flex; align-items: center; justify-content: center;
+  color: var(--ay-fg-1);
+}
+.ev-card .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.ev-card .loc { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--ay-fg-3); }
+.ev-card .loc .ay-icon { font-size: 14px; color: var(--ay-cp-primary-5); }
+.ev-card h4 { margin: 0; font-size: 16px; font-weight: 700; color: var(--ay-fg-1); line-height: 1.45; min-height: 46px; }
+.ev-card .date { font-size: 13px; color: var(--ay-fg-2); display: inline-flex; align-items: center; gap: 4px; }
+.ev-card .date .ay-icon { font-size: 14px; color: var(--ay-fg-3); }
+.ev-card .pkgs { display: flex; gap: 4px; flex-wrap: wrap; }
+.ev-card .pill { font-size: 11px; padding: 2px 7px; background: var(--ay-neutral-1); border-radius: 3px; color: var(--ay-fg-2); }
+.ev-card .price-row {
+  margin-top: auto; padding-top: 8px; display: flex; align-items: baseline; gap: 4px;
+  border-top: 1px solid var(--ay-neutral-2);
+}
+.ev-card .price-row em { font-style: normal; font-size: 11px; color: var(--ay-fg-3); }
+.ev-card .price-row strong { font-size: 18px; font-weight: 700; color: var(--ay-danger-5); }
+.ev-card .price-row .unit { font-size: 11px; color: var(--ay-fg-3); }
+
+/* coming soon card variant */
+.cs-card {
+  flex: 0 0 280px; scroll-snap-align: start;
+  background: #fff; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--ay-neutral-3); cursor: pointer;
+  display: flex; flex-direction: column;
+}
+.cs-card .img {
+  height: 168px; position: relative; background-size: cover; background-position: center;
+  background-color: var(--ay-neutral-2);
+  filter: grayscale(.4) brightness(.85);
+}
+.cs-card .img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(20,30,40,.2) 0%, rgba(20,30,40,.55) 100%);
+}
+.cs-card .img .countdown {
+  position: absolute; left: 12px; top: 12px; z-index: 2;
+  padding: 4px 10px; border-radius: 4px;
+  background: rgba(0,0,0,.55); backdrop-filter: blur(4px);
+  color: #fff; font-size: 12px; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.cs-card .img .stamp {
+  position: absolute; right: 12px; bottom: 12px; z-index: 2;
+  padding: 4px 10px; border-radius: 100px;
+  background: rgba(255,255,255,.9); color: var(--ay-fg-1);
+  font-size: 11px; font-weight: 700; letter-spacing: .05em;
+}
+.cs-card .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.cs-card .loc { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--ay-fg-3); }
+.cs-card .loc .ay-icon { font-size: 14px; color: var(--ay-cp-primary-5); }
+.cs-card h4 { margin: 0; font-size: 16px; font-weight: 700; color: var(--ay-fg-1); line-height: 1.45; min-height: 46px; }
+.cs-card .open-date {
+  font-size: 13px; color: var(--ay-cp-primary-6); font-weight: 500;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.cs-card .open-date .ay-icon { font-size: 14px; }
+.cs-card .notify-btn {
+  margin-top: auto; padding: 10px 0;
+  background: var(--ay-cp-primary-0); color: var(--ay-cp-primary-6);
+  border: 1px solid var(--ay-cp-primary-3); border-radius: 6px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  transition: all 150ms;
+}
+.cs-card .notify-btn:hover { background: var(--ay-cp-primary-1); }
+.cs-card .notify-btn.subscribed { background: var(--ay-success-0); color: var(--ay-success-7); border-color: var(--ay-success-3); }
+
+/* ============ FEATURED PLACEHOLDER ============ */
+.featured-placeholder {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.featured-stub {
+  background: #fff; border: 2px dashed var(--ay-neutral-3); border-radius: 12px;
+  aspect-ratio: 5/4; padding: 24px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: 10px; color: var(--ay-fg-3);
+}
+.featured-stub .ay-icon { font-size: 36px; color: var(--ay-neutral-5); }
+.featured-stub .lbl { font-size: 14px; font-weight: 700; color: var(--ay-fg-2); }
+.featured-stub .desc { font-size: 12px; line-height: 1.6; }
+
+/* ============ WHY US ============ */
+.why { background: var(--ay-cp-primary-0); padding: 56px 0; margin-top: 56px; }
+.why-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.why h2 { font-size: 26px; font-weight: 700; color: var(--ay-fg-1); margin: 0 0 4px; }
+.why .sub { font-size: 14px; color: var(--ay-fg-3); margin-bottom: 28px; }
+.why .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.why-cell { background: #fff; padding: 28px 22px; border-radius: 12px; }
+.why-cell .icn {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: var(--ay-cp-primary-5); color: #fff;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+}
+.why-cell h4 { margin: 0 0 8px; font-size: 17px; font-weight: 700; color: var(--ay-fg-1); }
+.why-cell p { margin: 0; font-size: 13px; color: var(--ay-fg-2); line-height: 1.7; }
+
+/* ============ FAQ ============ */
+.faq-tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.faq-tab {
+  padding: 7px 18px; border-radius: 100px;
+  border: 1px solid var(--ay-neutral-4); background: #fff;
+  font-size: 14px; color: var(--ay-fg-2); cursor: pointer;
+}
+.faq-tab.active { background: var(--ay-cp-primary-5); border-color: var(--ay-cp-primary-5); color: #fff; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; }
+.faq-item { background: #fff; border: 1px solid var(--ay-neutral-3); border-radius: 8px; padding: 16px 20px; cursor: pointer; }
+.faq-item.open { border-color: var(--ay-cp-primary-5); }
+.faq-item .q { display: flex; justify-content: space-between; align-items: center; font-size: 15px; font-weight: 500; color: var(--ay-fg-1); }
+.faq-item .q .ay-icon { color: var(--ay-fg-3); transition: transform 200ms; }
+.faq-item.open .q .ay-icon { color: var(--ay-cp-primary-5); transform: rotate(180deg); }
+.faq-item .a { margin-top: 10px; font-size: 14px; color: var(--ay-fg-2); line-height: 1.7; display: none; }
+.faq-item.open .a { display: block; }
+
+/* ============ CONTACT ============ */
+.contact {
+  background: var(--ay-neutral-8); color: #fff;
+  border-radius: 12px; padding: 32px 36px;
+  display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+}
+.contact h3 { font-size: 22px; font-weight: 700; margin: 0 0 6px; }
+.contact p { margin: 0; font-size: 14px; color: rgba(255,255,255,.75); }
+.contact .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.contact .btn {
+  padding: 10px 22px; border-radius: 4px; font-size: 15px; font-weight: 500; cursor: pointer;
+  border: 1px solid transparent; display: inline-flex; align-items: center; gap: 6px;
+}
+.contact .btn.line { background: #06C755; color: #fff; }
+.contact .btn.phone { background: transparent; color: #fff; border-color: rgba(255,255,255,.35); }
+.contact .btn.b2b { background: var(--ay-cp-primary-5); color: #fff; }
+
+/* ============ FOOTER ============ */
+.ay-footer {
+  background: var(--ay-neutral-9); color: rgba(255,255,255,.75);
+  padding: 40px 24px 24px; margin-top: 56px;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-cols { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+.footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin: 0 0 14px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,.65); padding: 4px 0; cursor: pointer; text-decoration: none; }
+.footer-col a:hover { color: #fff; }
+.footer-col p { margin: 6px 0; font-size: 13px; line-height: 1.7; }
+.footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.footer-brand img { height: 28px; filter: brightness(0) invert(1); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.12); padding-top: 18px;
+  display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,.5);
+  flex-wrap: wrap; gap: 12px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 800px) {
+  .hero-inner { padding: 36px 16px 80px; }
+  .hero h1 { font-size: 28px; }
+  .hero .lede { font-size: 14px; }
+  .search-fields { grid-template-columns: 1fr; }
+  .field + .field { border-left: none; border-top: 1px solid var(--ay-neutral-2); }
+  .search-cta { padding: 14px; margin-top: 4px; }
+  .section { padding: 36px 16px 0; }
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .why .grid { grid-template-columns: repeat(2, 1fr); }
+  .featured-placeholder { grid-template-columns: 1fr; }
+  .footer-cols { grid-template-columns: 1fr 1fr; }
+  .calendar-placeholder { grid-template-columns: 1fr; }
+  .ay-header nav { display: none; }
+  .contact { grid-template-columns: 1fr; }
+  .banner-row { padding: 0 16px; margin-top: -56px; }
+  .hero-carousel { height: 200px; }
+  .slide { padding: 0 36px; }
+  .slide .t { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel">/* SEB PP1.0 — AsiaYo Sport Travel Homepage */
+const { useState, useEffect, useRef } = React;
+
+// ============ DATA ============
+// Unsplash photo helper — stable IDs, auto-format + width
+const UNSPLASH = (id, w = 600) => `https://images.unsplash.com/photo-${id}?w=${w}&auto=format&fit=crop&q=70`;
+
+const heroImg = (key) => {
+  const map = {
+    mara:['#055885','#1e9fd2'], bike:['#20AEA1','#63CBC2'],
+    hike:['#455a64','#90a4ae'], golf:['#04ad00','#60cc5d'],
+    tri:['#f4511e','#ff9b70'],  base:['#ffb300','#ffd752'],
+    ski:['#0f7aab','#a3d9f2'],
+  };
+  const [a,b] = map[key] || map.mara;
+  return `linear-gradient(135deg, ${a}, ${b})`;
+};
+
+const SPORT_TABS = [
+  { key: 'all',      label: '全部',     icon: 'apps' },
+  { key: 'marathon', label: '馬拉松',   icon: 'directions_run' },
+  { key: 'cycling',  label: '單車',     icon: 'directions_bike' },
+  { key: 'hike',     label: '登山健行', icon: 'terrain', isNew: true },
+  { key: 'golf',     label: '高爾夫',   icon: 'sports_golf' },
+  { key: 'tri',      label: '鐵人三項', icon: 'pool' },
+  { key: 'ski',      label: '滑雪',     icon: 'downhill_skiing', isNew: true },
+  { key: 'baseball', label: '棒球觀戰', icon: 'sports_baseball' },
+];
+
+const HOT_KEYWORDS = ['富士山馬拉松', '東京馬拉松', '島波海道單車', '北海道滑雪', '韓國雪嶽山', 'IRONMAN 宮古島'];
+
+const BANNERS = [
+  { badge:'限時早鳥', t:'2026 富士山馬拉松 早鳥優惠', s:'最高折抵 NT$ 2,000，含官方參賽權 + 河口湖住宿 2 晚', img:'1545569341-9eb8b30979d9' },
+  { badge:'2 年一度', t:'瀨戶內島波海道單車挑戰',     s:'廣島→愛媛經典跨海騎行，含中文領隊 + 飯店',         img:'1517649763962-0c623066013b' },
+  { badge:'雪季開賣', t:'2026-27 日本滑雪季',           s:'二世谷 / 白馬 / 苗場 — 含纜車券 + 接駁 + 雪具',     img:'1551698618-1dfe5d97d256' },
+  { badge:'新上架',   t:'2026 韓國秋季馬拉松',           s:'JTBC 首爾馬 / 春川馬 — 報名 + 飯店一站購足',       img:'1530549387789-4c1017266635' },
+];
+
+const FEATURES = [
+  { label:'日本馬拉松', desc:'東京 / 大阪 / 富士山 / 北海道', type:'mara',  href:'SEB List · 日本馬拉松.html', img:'1452626038306-9aae5e071dd3' },
+  { label:'日本滑雪',   desc:'二世谷 / 白馬 / 苗場 / 妙高',  type:'ski',   isNew:true, img:'1551698618-1dfe5d97d256' },
+  { label:'歐洲六大馬', desc:'柏林 / 倫敦 / 波士頓',         type:'mara',  img:'1571008887538-b36bb32f4571' },
+  { label:'東南亞高爾夫', desc:'泰國 / 越南 / 巴厘島',        type:'golf',  img:'1535131749006-b7f58c99034b' },
+  { label:'登山健行',   desc:'富士山 / 北阿爾卑斯 / 雪嶽',  type:'hike',  isNew:true, img:'1551632811-561732d1e306' },
+  { label:'單車路線',   desc:'島波海道 / 北海道花田',       type:'bike',  img:'1517649763962-0c623066013b' },
+  { label:'IRONMAN 系列', desc:'宮古島 / Challenge Taiwan',   type:'tri',   img:'1530137073521-28cda9e8e8c0' },
+  { label:'棒球觀戰',   desc:'NPB / MLB / 甲子園聖地',       type:'base',  img:'1508344928-c45c0f51ad95' },
+];
+
+const PROMO_SUBTABS = [
+  { key:'hot',     label:'熱銷中賽事' },
+  { key:'pb',      label:'追求PB' },
+  { key:'beginner',label:'新手友善' },
+  { key:'extreme', label:'挑戰極限' },
+  { key:'tour',    label:'包車/一日遊' },
+];
+
+const PROMO_EVENTS = [
+  { type:'mara', loc:'山梨',   title:'2026 富士山馬拉松',   date:'2026/12/13', pkgs:['全馬','環湖'],   price:'9,950',  ribbon:'熱銷',     ribbonKind:'',     img:'1545569341-9eb8b30979d9' },
+  { type:'mara', loc:'北海道', title:'札幌馬拉松 國際組', date:'2026/10/04', pkgs:['半馬','10K'],    price:'8,560',  ribbon:'數量有限', ribbonKind:'warm', img:'1571008887538-b36bb32f4571' },
+  { type:'ski',  loc:'北海道', title:'二世谷滑雪 4 日',     date:'2026/12 開放', pkgs:['含纜車','雪具'], price:'24,800', ribbon:'雪季新上架', ribbonKind:'',     img:'1551698618-1dfe5d97d256' },
+  { type:'mara', loc:'首爾',   title:'JTBC 首爾馬拉松',     date:'2026/11/01', pkgs:['全馬'],         price:'13,155', ribbon:'早鳥 -2000', ribbonKind:'early',img:'1530549387789-4c1017266635' },
+  { type:'bike', loc:'廣島',   title:'瀨戶內島波海道 3 日',  date:'2026/10/24', pkgs:['尾道→今治'],    price:'43,065', ribbon:'2 年一度', ribbonKind:'warm', img:'1517649763962-0c623066013b' },
+  { type:'golf', loc:'峴港',   title:'越南峴港高爾夫 5 日',  date:'隨時',         pkgs:['4 場球敘'],     price:'34,500', ribbon:'熱銷',     ribbonKind:'',     img:'1535131749006-b7f58c99034b' },
+  { type:'tri',  loc:'宮古島', title:'IRONMAN 70.3 宮古島',  date:'2026/04',     pkgs:['113 半超鐵'],   price:'42,500', ribbon:'',         ribbonKind:'',     img:'1530137073521-28cda9e8e8c0' },
+  { type:'hike', loc:'山梨',   title:'富士山登山 吉田路線',  date:'2026/07',     pkgs:['2 天 1 夜'],    price:'18,500', ribbon:'一生必去', ribbonKind:'warm', img:'1551632811-561732d1e306' },
+];
+
+const COMING_SOON = [
+  { type:'mara', loc:'東京',   title:'2027 東京馬拉松',   open:'2026/08/01 10:00', cd:'倒數 96 天', stamp:'抽籤制',    img:'1480796927426-f609979314bd' },
+  { type:'mara', loc:'大阪',   title:'2027 大阪馬拉松',   open:'2026/05/15 10:00', cd:'倒數 18 天', stamp:'先到先得',  img:'1493780474015-ba834fd0ce2f' },
+  { type:'ski',  loc:'白馬',   title:'2026-27 白馬村滑雪季',   open:'2026/06/01 10:00', cd:'倒數 35 天', stamp:'雪季限定',  img:'1551524559-8af4e6624178' },
+  { type:'mara', loc:'柏林',   title:'2027 柏林馬拉松',   open:'2026/10/01 16:00', cd:'倒數 5 個月', stamp:'六大馬',  img:'1560969184-10fe8719e047' },
+  { type:'tri',  loc:'北海道', title:'IRONMAN 北海道 226',  open:'2026/09/01 10:00', cd:'倒數 4 個月', stamp:'極限挑戰', img:'1530137073521-28cda9e8e8c0' },
+  { type:'mara', loc:'紐約',   title:'2027 紐約馬拉松',   open:'2026/11/15 22:00', cd:'倒數 6 個月', stamp:'六大馬',  img:'1510894347713-fc3ed6fdf539' },
+];
+
+const VALUES = [
+  { ic:'verified',            t:'官方授權報名通路',   s:'直接對接主辦單位，獲取官方參賽資格與名額保障。' },
+  { ic:'confirmation_number', t:'獨家保留名額',       s:'熱門賽事額滿時，仍有 AsiaYo 獨家配額。' },
+  { ic:'support_agent',       t:'中文專員服務',       s:'從報名、行前說明到賽事當日，專人中文對接疑問。' },
+  { ic:'explore',             t:'多元賽事選擇',       s:'馬拉松 / 登山 / 單車 / 高爾夫 / 鐵人 / 滑雪 全球 100+ 賽事。' },
+];
+
+const FAQS = {
+  '報名流程': [
+    { q:'AsiaYo 是官方授權的報名通路嗎？', a:'是，AsiaYo 與東京馬、大阪馬、富士山馬、北海道馬等 20+ 國際賽事主辦方有直接合作，所有名額皆為官方正式配額。' },
+    { q:'從預訂到領取號碼布的流程是？',   a:'下單 → 填寫參賽資料 → AsiaYo 送件給主辦方 → 收到官方確認信 → 賽前 2-3 天親自到 Expo 領取。' },
+  ],
+  '賽事資格': [
+    { q:'熱門賽事已滿額，還有機會嗎？', a:'部分賽事 AsiaYo 保有獨家配額，請直接透過我們訂購。' },
+    { q:'需要完賽證明或體測報告嗎？',    a:'日本百選馬拉松通常需要，請至少提供 1 年內的全馬或半馬成績證明。' },
+  ],
+  '退改票': [
+    { q:'無法出賽能退款嗎？', a:'依各主辦方政策，多數國際賽事報名費不可退。住宿部分依各飯店取消政策辦理。' },
+  ],
+};
+
+// ============ ATOMS ============
+const Icon = ({ name, style, ...rest }) => (
+  <span className="ay-icon" style={{ fontSize: 18, ...style }} {...rest}>{name}</span>
+);
+
+const Header = () => (
+  <header className="ay-header">
+    <div className="ay-header-inner">
+      <img className="logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMjQwIDU2IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkFzaWFZbyI+CiAgPGcgZmlsbD0iIzI2MjYyNiIgZm9udC1mYW1pbHk9IiYjMzk7Tm90byBTYW5zIFRDJiMzOTssIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMzYiIGxldHRlci1zcGFjaW5nPSItMC4wMmVtIj4KICAgIDx0ZXh0IHg9IjAiIHk9IjQwIj5Bc2lhPC90ZXh0PgogICAgPHRleHQgeD0iOTIiIHk9IjQwIiBmaWxsPSIjMWU5ZmQyIj5ZbzwvdGV4dD4KICA8L2c+CiAgPGNpcmNsZSBjeD0iMTU4IiBjeT0iMTYiIHI9IjQiIGZpbGw9IiMxZTlmZDIiPjwvY2lyY2xlPgo8L3N2Zz4=" alt="AsiaYo" />
+      <nav>
+        <a>住宿</a>
+        <a>跟團旅遊</a>
+        <a>郵輪</a>
+        <a className="active">運動旅遊</a>
+        <a>景點行程</a>
+        <a>活動專區</a>
+      </nav>
+      <span className="spacer" />
+      <span className="lang"><Icon name="language" style={{fontSize:14}} />繁中 · TWD</span>
+      <button className="login">登入 / 註冊</button>
+    </div>
+  </header>
+);
+
+const SearchHero = () => {
+  return (
+    <div className="hero">
+      <div className="hero-inner">
+        <h1>把賽事報名 + 海外住宿一次搞定</h1>
+        <p className="lede">AsiaYo 為東京馬、大阪馬、富士山馬、IRONMAN、二世谷滑雪等 20+ 國際運動賽事官方授權通路。一個搜尋，找到屬於你的運動旅程。</p>
+
+        <div className="search-box">
+          <div className="search-fields">
+            <div className="field">
+              <span className="label"><Icon name="location_on" />目的地 / 賽事名稱</span>
+              <span className="value placeholder">例如：富士山、東京馬、二世谷</span>
+            </div>
+            <div className="field">
+              <span className="label"><Icon name="event" />出發月份</span>
+              <span className="value placeholder">選擇月份</span>
+            </div>
+            <div className="field">
+              <span className="label"><Icon name="filter_alt" />賽事類型</span>
+              <span className="value placeholder">不限</span>
+            </div>
+            <button className="search-cta">
+              <Icon name="search" style={{fontSize:20}} />搜尋
+            </button>
+          </div>
+        </div>
+
+        <div className="hot-kw">
+          <span className="hot-kw-label">熱門搜尋：</span>
+          {HOT_KEYWORDS.map(k => <button key={k} className="hot-kw-chip">{k}</button>)}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const BannerCarousel = () => {
+  const [idx, setIdx] = useState(0);
+  const n = BANNERS.length;
+  useEffect(() => { const t = setInterval(() => setIdx(i => (i + 1) % n), 5000); return () => clearInterval(t); }, [n]);
+  return (
+    <div className="banner-row">
+      <div className="hero-carousel">
+        <div className="slides" style={{ transform: `translateX(-${idx * 100}%)` }}>
+          {BANNERS.map((b, i) => (
+            <div key={i} className="slide" style={{ backgroundImage: b.img ? `linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.25) 60%, rgba(0,0,0,.15) 100%), url(${UNSPLASH(b.img, 1200)})` : b.bg }}>
+              <div>
+                <h3 className="t">{b.t}</h3>
+                <p className="s">{b.s}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <button className="arrow prev" onClick={() => setIdx(i => (i - 1 + n) % n)}><Icon name="chevron_left" style={{fontSize:24}} /></button>
+        <button className="arrow next" onClick={() => setIdx(i => (i + 1) % n)}><Icon name="chevron_right" style={{fontSize:24}} /></button>
+        <div className="dots">{BANNERS.map((_, i) => <button key={i} className={i===idx?'active':''} onClick={()=>setIdx(i)} />)}</div>
+      </div>
+    </div>
+  );
+};
+
+const SectionHead = ({ title, sub, more = null }) => (
+  <div className="section-head">
+    <div>
+      <h2>{title}</h2>
+      <div className="sub">{sub}</div>
+    </div>
+    {more && <button className="more">{more} <Icon name="chevron_right" style={{fontSize:16}} /></button>}
+  </div>
+);
+
+const FeatureGrid = () => (
+  <div className="feature-grid">
+    {FEATURES.map((f, i) => {
+      const Tag = f.href ? 'a' : 'div';
+      const linkProps = f.href ? { href: f.href } : {};
+      return (
+        <Tag key={i} {...linkProps} className="feature-card" style={{ backgroundImage: f.img ? `url(${UNSPLASH(f.img, 500)})` : heroImg(f.type), textDecoration:'none' }}>
+          <div className="label">
+            <h4>{f.label}</h4>
+            <p>{f.desc}</p>
+          </div>
+        </Tag>
+      );
+    })}
+  </div>
+);
+
+const CalendarPlaceholder = () => (
+  <div className="calendar-placeholder">
+    <div>
+      <span className="stub-tag">PLACEHOLDER · 待產品決定</span>
+      <h3><Icon name="event_available" style={{fontSize:26, marginRight:8, color:'var(--ay-cp-primary-5)'}} />賽事日曆 / 即將開賽</h3>
+      <p>此區塊保留給賽事日曆 — 月份切換、開賽倒數、報名截止提醒。內容形式由 PP1.0 後續討論確定（時間軸 / 月曆視圖 / 卡片列表）。</p>
+    </div>
+    <div className="visual">
+      {[['5月','12','賽事'],['6月','8','賽事'],['7月','15','賽事'],['8月','9','賽事']].map(([m,n,l]) => (
+        <div key={m} className="month-stub">
+          <div className="m">{m}</div>
+          <div className="n">{n}</div>
+          <div className="lbl">{l}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const Scroller = ({ children }) => {
+  const ref = useRef(null);
+  const scroll = (dir) => {
+    if (ref.current) ref.current.scrollBy({ left: dir * 600, behavior: 'smooth' });
+  };
+  return (
+    <div className="scroller-wrap">
+      <button className="scroll-arrow prev" onClick={()=>scroll(-1)}><Icon name="chevron_left" style={{fontSize:22}} /></button>
+      <div className="scroller" ref={ref}>{children}</div>
+      <button className="scroll-arrow next" onClick={()=>scroll(1)}><Icon name="chevron_right" style={{fontSize:22}} /></button>
+    </div>
+  );
+};
+
+const EventCard = ({ ev }) => (
+  <div className="ev-card">
+    <div className="img" style={{ backgroundImage: ev.img ? `url(${UNSPLASH(ev.img, 600)})` : heroImg(ev.type) }}>
+      {ev.ribbon && <span className="ribbon">{ev.ribbon}</span>}
+      <span className="fav"><Icon name="favorite_border" style={{fontSize:18}} /></span>
+    </div>
+    <div className="body">
+      <div className="loc"><Icon name="location_on" />{ev.loc}</div>
+      <h4>{ev.title}</h4>
+      <div className="date"><Icon name="event" />{ev.date}</div>
+      <div className="pkgs">{ev.pkgs.map(p => <span key={p} className="pill">{p}</span>)}</div>
+      <div className="price-row">
+        <em>每人最低</em>
+        <strong>NT$ {ev.price}</strong>
+        <span className="unit">起</span>
+      </div>
+    </div>
+  </div>
+);
+
+const ComingSoonCard = ({ ev }) => {
+  const [sub, setSub] = useState(false);
+  return (
+    <div className="cs-card">
+      <div className="img" style={{ backgroundImage: ev.img ? `url(${UNSPLASH(ev.img, 600)})` : heroImg(ev.type) }}>
+      </div>
+      <div className="body">
+        <div className="loc"><Icon name="location_on" />{ev.loc}</div>
+        <h4>{ev.title}</h4>
+        <div className="open-date"><Icon name="bolt" />{ev.open} 開賣</div>
+        <button className={`notify-btn ${sub?'subscribed':''}`} onClick={(e)=>{e.stopPropagation(); setSub(s=>!s);}}>
+          <Icon name={sub?'check_circle':'notifications_active'} style={{fontSize:16}} />
+          {sub ? '已訂閱通知' : '通知我開賣'}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const PromoSection = () => {
+  const [tab, setTab] = useState('hot');
+  return (
+    <section className="section">
+      <SectionHead title="促銷搶購" sub="限額報名中的熱門賽事與運動行程，錯過要等明年。" />
+      <div className="subtabs">
+        {PROMO_SUBTABS.map(t => (
+          <button key={t.key} className={`subtab ${tab===t.key?'active':''}`} onClick={()=>setTab(t.key)}>{t.label}</button>
+        ))}
+      </div>
+      <div className="grid-4">{PROMO_EVENTS.map((e,i) => <EventCard key={i} ev={e} />)}</div>
+    </section>
+  );
+};
+
+const ComingSoonSection = () => (
+  <section className="section">
+    <SectionHead title="即將開放賽事" sub="設定通知，第一時間搶下熱門賽事配額。" />
+    <Scroller>{COMING_SOON.map((e,i) => <ComingSoonCard key={i} ev={e} />)}</Scroller>
+  </section>
+);
+
+const FeaturedPlaceholder = () => (
+  <section className="section">
+    <SectionHead title="精選推薦" sub="編輯精選的高品質運動旅遊行程。內容由 PP1.0 後續定義。" more={null} />
+    <div className="featured-placeholder">
+      {[1,2,3].map(i => (
+        <div key={i} className="featured-stub">
+          <Icon name="auto_awesome" />
+          <div className="lbl">精選推薦 #{i}</div>
+          <div className="desc">PLACEHOLDER<br/>編輯精選 · 待產品決定推薦邏輯</div>
+        </div>
+      ))}
+    </div>
+  </section>
+);
+
+const WhyUs = () => (
+  <section className="why">
+    <div className="why-inner">
+      <h2>為什麼選擇 AsiaYo 運動旅遊</h2>
+      <div className="sub">官方授權通路、獨家保留名額、中文專員服務、多元賽事選擇</div>
+      <div className="grid">
+        {VALUES.map((v,i) => (
+          <div key={i} className="why-cell">
+            <div className="icn"><Icon name={v.ic} style={{fontSize:24}} /></div>
+            <h4>{v.t}</h4>
+            <p>{v.s}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const FAQBlock = () => {
+  const topics = Object.keys(FAQS);
+  const [topic, setTopic] = useState(topics[0]);
+  const [openIdx, setOpenIdx] = useState(0);
+  const items = FAQS[topic];
+  return (
+    <section className="section">
+      <SectionHead title="常見問題" sub="近期熱門詢問" />
+      <div className="faq-tabs">
+        {topics.map(t => (
+          <button key={t} className={`faq-tab ${topic===t?'active':''}`} onClick={() => { setTopic(t); setOpenIdx(0); }}>{t}</button>
+        ))}
+      </div>
+      <div className="faq-list">
+        {items.map((it,i) => (
+          <div key={i} className={`faq-item ${i===openIdx?'open':''}`} onClick={() => setOpenIdx(i===openIdx ? -1 : i)}>
+            <div className="q"><span>{it.q}</span><Icon name="expand_more" /></div>
+            <div className="a">{it.a}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const ContactBlock = () => (
+  <section className="section last">
+    <div className="contact">
+      <div>
+        <h3>運動旅遊專線</h3>
+        <p>中文專員 週一 ~ 週五 09:00–18:00　·　LINE 線上諮詢 24/7　·　歡迎企業包團 / B2B 合作</p>
+      </div>
+      <div className="actions">
+        <button className="btn line"><Icon name="chat" style={{fontSize:18}} />LINE 諮詢</button>
+        <button className="btn phone"><Icon name="call" style={{fontSize:18}} />02-7755-0575</button>
+        <button className="btn b2b"><Icon name="business" style={{fontSize:18}} />B2B 合作</button>
+      </div>
+    </div>
+  </section>
+);
+
+const Footer = () => (
+  <footer className="ay-footer">
+    <div className="footer-inner">
+      <div className="footer-cols">
+        <div className="footer-col">
+          <div className="footer-brand">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMjQwIDU2IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkFzaWFZbyI+CiAgPGcgZmlsbD0iIzI2MjYyNiIgZm9udC1mYW1pbHk9IiYjMzk7Tm90byBTYW5zIFRDJiMzOTssIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMzYiIGxldHRlci1zcGFjaW5nPSItMC4wMmVtIj4KICAgIDx0ZXh0IHg9IjAiIHk9IjQwIj5Bc2lhPC90ZXh0PgogICAgPHRleHQgeD0iOTIiIHk9IjQwIiBmaWxsPSIjMWU5ZmQyIj5ZbzwvdGV4dD4KICA8L2c+CiAgPGNpcmNsZSBjeD0iMTU4IiBjeT0iMTYiIHI9IjQiIGZpbGw9IiMxZTlmZDIiPjwvY2lyY2xlPgo8L3N2Zz4=" alt="AsiaYo" />
+          </div>
+          <p>AsiaYo 運動旅遊（SEB）— 為熱愛運動的旅人提供官方授權的賽事報名與海外住宿整合服務。</p>
+        </div>
+        <div className="footer-col">
+          <h5>運動分類</h5>
+          <a>馬拉松</a><a>單車</a><a>登山健行</a><a>高爾夫</a><a>鐵人三項</a><a>滑雪</a><a>棒球觀戰</a>
+        </div>
+        <div className="footer-col">
+          <h5>熱門目的地</h5>
+          <a>日本</a><a>韓國</a><a>東南亞</a><a>歐洲</a><a>美洲</a>
+        </div>
+        <div className="footer-col">
+          <h5>關於 AsiaYo</h5>
+          <a>關於我們</a><a>合作賽事</a><a>B2B 合作</a><a>企業包團</a><a>媒體報導</a>
+        </div>
+        <div className="footer-col">
+          <h5>客服支援</h5>
+          <a>常見問題</a><a>聯絡客服</a><a>退改規範</a><a>隱私權政策</a>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <span>© 2026 AsiaYo.com Inc. 保留一切權利</span>
+        <span>SEB PP1.0 · prototype</span>
+      </div>
+    </div>
+  </footer>
+);
+
+// ============ APP ============
+function App() {
+  return (
+    <div data-screen-label="SEB PP1.0">
+      <Header />
+      <SearchHero />
+      <BannerCarousel />
+      <section className="section">
+        <SectionHead title="從特色 / 地區瀏覽" sub="挑一個你感興趣的方向，看看我們有哪些行程。" />
+        <FeatureGrid />
+      </section>
+      <PromoSection />
+      <ComingSoonSection />
+      <FeaturedPlaceholder />
+      <WhyUs />
+      <FAQBlock />
+      <ContactBlock />
+      <Footer />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('app')).render(<App />);
+</script>
+</body>
+</html>

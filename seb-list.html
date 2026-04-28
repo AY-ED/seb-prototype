@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<title>日本馬拉松 · 運動旅遊 List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>/* =======================================================================
+   AsiaYo Design System — Colors & Type
+   Extracted from `ui-library-master/src/theme/**`
+   ======================================================================= */
+
+/* ---- Webfonts: Noto Sans family (per-locale) + Sarabun (Thai) via Google Fonts.
+   AsiaYo uses locale-specific Noto Sans variants; Sarabun for TH.
+   Scale is identical across locales: H1/48, H2/32, H3/24, H4/20, H5/16, H6/14 (all 700);
+   M1/16, M2/14 (500); P1/16, P2/14, P3/12 (400). */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+HK:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Sarabun:wght@400;500;700&display=swap');
+
+/* ---- Webfonts: AsiaYo icon fonts (proprietary, loaded from brand CDN) */
+@font-face {
+  font-family: 'Ay-Icons';
+  src: url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Icons.woff?bskj5z') format('woff'),
+       url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Icons.ttf?bskj5z') format('truetype');
+  font-display: block;
+}
+@font-face {
+  font-family: 'Ay-Web-Icons-Line';
+  src: url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Web-Icons-Line.woff?7x7r1r') format('woff'),
+       url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Web-Icons-Line.ttf?7x7r1r') format('truetype');
+  font-display: block;
+}
+@font-face {
+  font-family: 'Ay-Web-Icons-Solid';
+  src: url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Web-Icons-Solid.woff?lw0ri6') format('woff'),
+       url('https://img.asiayo.com/static/icon/v1.0.24/Ay-Web-Icons-Solid.ttf?lw0ri6') format('truetype');
+  font-display: block;
+}
+
+/* ---- Body font: Noto Sans TC (Google Fonts — substitution; real product uses system CJK) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+:root {
+  /* ---------- NEUTRAL (shared) ---------- */
+  --ay-neutral-0: #ffffff;
+  --ay-neutral-1: #fafafa;
+  --ay-neutral-2: #f5f5f5;
+  --ay-neutral-3: #e8e8e8;
+  --ay-neutral-4: #d9d9d9;
+  --ay-neutral-5: #bfbfbf;
+  --ay-neutral-6: #8c8c8c;
+  --ay-neutral-7: #595959;
+  --ay-neutral-8: #262626;
+  --ay-neutral-9: #000000;
+
+  /* ---------- SUCCESS ---------- */
+  --ay-success-0: #efffef;
+  --ay-success-1: #ddf7dc;
+  --ay-success-2: #baf0b9;
+  --ay-success-3: #a0e09e;
+  --ay-success-4: #60cc5d;
+  --ay-success-5: #04ad00;
+  --ay-success-6: #088c37;
+  --ay-success-7: #016628;
+  --ay-success-8: #00401b;
+  --ay-success-9: #001a0b;
+
+  /* ---------- WARNING ---------- */
+  --ay-warning-0: #fffce6;
+  --ay-warning-1: #fff0a3;
+  --ay-warning-2: #ffe47a;
+  --ay-warning-3: #ffd752;
+  --ay-warning-4: #ffc629;
+  --ay-warning-5: #ffb300;
+  --ay-warning-6: #d99100;
+  --ay-warning-7: #b37100;
+  --ay-warning-8: #8c5400;
+  --ay-warning-9: #663a00;
+
+  /* ---------- DANGER ---------- */
+  --ay-danger-0: #fff3eb;
+  --ay-danger-1: #ffd8c2;
+  --ay-danger-2: #ffbb99;
+  --ay-danger-3: #ff9b70;
+  --ay-danger-4: #ff7847;
+  --ay-danger-5: #f4511e;
+  --ay-danger-6: #cf350e;
+  --ay-danger-7: #a81f03;
+  --ay-danger-8: #821100;
+  --ay-danger-9: #5c0900;
+
+  /* ---------- INDIGO (illustration / secondary accent) ---------- */
+  --ay-indigo-0: #eceff1;
+  --ay-indigo-1: #cfd8dc;
+  --ay-indigo-2: #b0bec5;
+  --ay-indigo-3: #90a4ae;
+  --ay-indigo-4: #78909c;
+  --ay-indigo-5: #607d8b;
+  --ay-indigo-6: #546e7a;
+  --ay-indigo-7: #455a64;
+  --ay-indigo-8: #37474f;
+  --ay-indigo-9: #263238;
+
+  /* ---------- USAGE: MOMO (co-brand) ---------- */
+  --ay-momo-0: #D62872;
+  --ay-momo-1: #B0195F;
+  --ay-momo-2: #8A0C4B;
+
+  /* ---------- CP (Consumer Product, traveller-facing) primary: cyan/blue ---------- */
+  --ay-cp-primary-0: #f0fdff;
+  --ay-cp-primary-1: #c7f7ff;
+  --ay-cp-primary-2: #99e6f7;
+  --ay-cp-primary-3: #6ccfeb;
+  --ay-cp-primary-4: #43b7de;
+  --ay-cp-primary-5: #1e9fd2;  /* CP main.base */
+  --ay-cp-primary-6: #0f7aab;
+  --ay-cp-primary-7: #055885;
+  --ay-cp-primary-8: #003a5e;
+  --ay-cp-primary-9: #002138;
+
+  /* ---------- HOST (supplier portal) primary: teal ---------- */
+  --ay-host-primary-0: #E8F7F6;
+  --ay-host-primary-1: #BCE9E4;
+  --ay-host-primary-2: #90DAD3;
+  --ay-host-primary-3: #63CBC2;
+  --ay-host-primary-4: #37BDB0;
+  --ay-host-primary-5: #21B6A8;
+  --ay-host-primary-6: #20AEA1;  /* Host main.base */
+  --ay-host-primary-7: #1DA094;
+  --ay-host-primary-8: #198C82;
+  --ay-host-primary-9: #15756C;
+
+  /* ---------- SEMANTIC ---------- */
+  /* By default we expose CP theme. Flip via [data-ay-theme="host"] on html/body. */
+  --ay-primary-0: var(--ay-cp-primary-0);
+  --ay-primary-1: var(--ay-cp-primary-1);
+  --ay-primary-2: var(--ay-cp-primary-2);
+  --ay-primary-3: var(--ay-cp-primary-3);
+  --ay-primary-4: var(--ay-cp-primary-4);
+  --ay-primary-5: var(--ay-cp-primary-5);
+  --ay-primary-6: var(--ay-cp-primary-6);
+  --ay-primary-7: var(--ay-cp-primary-7);
+  --ay-primary-8: var(--ay-cp-primary-8);
+  --ay-primary-9: var(--ay-cp-primary-9);
+  --ay-main: var(--ay-cp-primary-5);
+
+  --ay-fg-1: var(--ay-neutral-8); /* headings */
+  --ay-fg-2: var(--ay-neutral-7); /* body */
+  --ay-fg-3: var(--ay-neutral-6); /* muted */
+  --ay-fg-4: var(--ay-neutral-5); /* placeholder / disabled */
+  --ay-bg-surface: var(--ay-neutral-0);
+  --ay-bg-subtle:  var(--ay-neutral-1);
+  --ay-bg-muted:   var(--ay-neutral-2);
+  --ay-border:     var(--ay-neutral-5);
+  --ay-divider:    var(--ay-neutral-3);
+
+  /* ---------- TYPOGRAPHY ---------- */
+  /* Default locale is TW (繁中). Override by setting lang="en|hk|sc|jp|kr|th" on
+     <html> or a subtree, OR by setting --ay-font-sans directly on a container. */
+  --ay-font-sans: 'Noto Sans TC', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'PingFang TC', 'Microsoft JhengHei', 'Segoe UI', Roboto, sans-serif;
+
+  /* ---- Type scale (from Zeroheight / Ark Design System) ---- */
+  /* Headings — Main title */
+  --ay-fs-h1: 48px;  /* H1 / 700 */
+  --ay-fs-h2: 32px;  /* H2 / 700 */
+  --ay-fs-h3: 24px;  /* H3 / 700 */
+  --ay-fs-h4: 20px;  /* H4 / 700 */
+  --ay-fs-h5: 16px;  /* H5 / 700 */
+  --ay-fs-h6: 14px;  /* H6 / 700 */
+  /* Sub-title — Medium */
+  --ay-fs-m1: 16px;  /* M1 / 500 */
+  --ay-fs-m2: 14px;  /* M2 / 500 */
+  /* Body — Paragraph */
+  --ay-fs-p1: 16px;  /* P1 / 400 */
+  --ay-fs-p2: 14px;  /* P2 / 400 */
+  --ay-fs-p3: 12px;  /* P3 / 400 */
+
+  /* Legacy aliases kept for existing components (Alert, Tag, Button …) */
+  --ay-fs-0: 12px;  /* = P3 */
+  --ay-fs-1: 14px;  /* = H6 / M2 / P2 */
+  --ay-fs-2: 16px;  /* = H5 / M1 / P1 */
+  --ay-fs-3: 20px;  /* = H4 */
+  --ay-fs-4: 24px;  /* = H3 */
+  --ay-fs-5: 32px;  /* = H2 */
+  --ay-fs-6: 48px;  /* = H1 */
+
+  --ay-fw-regular: 400;
+  --ay-fw-medium: 500;
+  --ay-fw-bold: 700;
+
+  /* ---------- SPACING (4px base) ---------- */
+  --ay-s-0: 0px;    --ay-s-0-5: 2px;
+  --ay-s-1: 4px;    --ay-s-1-5: 6px;
+  --ay-s-2: 8px;    --ay-s-2-5: 10px;
+  --ay-s-3: 12px;   --ay-s-3-5: 14px;
+  --ay-s-4: 16px;   --ay-s-4-5: 18px;
+  --ay-s-5: 20px;   --ay-s-5-5: 22px;
+  --ay-s-6: 24px;   --ay-s-7: 28px; --ay-s-7-5: 30px;
+  --ay-s-8: 32px;   --ay-s-9: 36px;
+  --ay-s-10: 40px;  --ay-s-11: 44px;
+  --ay-s-12: 48px;  --ay-s-13: 52px;
+  --ay-s-14: 56px;  --ay-s-15: 60px;
+  --ay-s-16: 64px;  --ay-s-18: 72px;
+  --ay-s-20: 80px;
+  --ay-s-xxs: 4px; --ay-s-xs: 8px; --ay-s-s: 16px; --ay-s-m: 24px; --ay-s-l: 48px; --ay-s-xl: 96px;
+
+  /* ---------- RADII ---------- */
+  --ay-r-0: 4px;
+  --ay-r-1: 8px;
+  --ay-r-2: 16px;
+  --ay-r-small: 16px;
+  --ay-r-medium: 20px;
+  --ay-r-large: 24px;
+  --ay-r-pill: 100px;
+
+  /* ---------- SHADOWS (z-stacked, all rgba(0,0,0,.08)) ---------- */
+  --ay-shadow-raised:       0 1px 2px rgba(0, 0, 0, 0.08);
+  --ay-shadow-dropdown:     0 2px 4px rgba(0, 0, 0, 0.08);
+  --ay-shadow-navigation:   0 3px 6px rgba(0, 0, 0, 0.08);
+  --ay-shadow-header:       0 4px 8px rgba(0, 0, 0, 0.08);
+  --ay-shadow-bulletin:     0 5px 10px rgba(0, 0, 0, 0.08);
+  --ay-shadow-flash-notice: 0 6px 12px rgba(0, 0, 0, 0.08);
+  --ay-shadow-modal:        0 7px 14px rgba(0, 0, 0, 0.08);
+  --ay-shadow-dialog:       0 8px 16px rgba(0, 0, 0, 0.08);
+
+  /* ---------- Z-INDICES ---------- */
+  --ay-z-base: 0;        --ay-z-flat: 1;       --ay-z-raised: 2;
+  --ay-z-overlay: 8;     --ay-z-dropdown: 1000;
+  --ay-z-navigation: 1010; --ay-z-header: 1020;
+  --ay-z-bulletin: 1030;   --ay-z-flash-notice: 1040;
+  --ay-z-mask: 1050;       --ay-z-modal: 1060;  --ay-z-dialog: 1070;
+
+  /* ---------- BREAKPOINTS ---------- */
+  --ay-bp-mini-tablet: 768px;
+  --ay-bp-tablet: 992px;
+  --ay-bp-desktop: 1280px;
+}
+
+/* Theme switch: set data-ay-theme="host" on <html> or a container to re-point primary */
+[data-ay-theme='host'] {
+  --ay-primary-0: var(--ay-host-primary-0);
+  --ay-primary-1: var(--ay-host-primary-1);
+  --ay-primary-2: var(--ay-host-primary-2);
+  --ay-primary-3: var(--ay-host-primary-3);
+  --ay-primary-4: var(--ay-host-primary-4);
+  --ay-primary-5: var(--ay-host-primary-5);
+  --ay-primary-6: var(--ay-host-primary-6);
+  --ay-primary-7: var(--ay-host-primary-7);
+  --ay-primary-8: var(--ay-host-primary-8);
+  --ay-primary-9: var(--ay-host-primary-9);
+  --ay-main: var(--ay-host-primary-6);
+}
+
+/* =======================================================================
+   Per-locale font family override. AsiaYo ships locale-specific Noto Sans
+   variants; EN uses the base Noto Sans, TH uses Sarabun. All locales use
+   the same type scale (sizes + weights).
+   ======================================================================= */
+[lang='en'], [lang='en-us'], [lang='en-gb'] {
+  --ay-font-sans: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+[lang='zh-tw'], [lang='zh-Hant-TW'] {
+  --ay-font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+[lang='zh-hk'], [lang='zh-Hant-HK'] {
+  --ay-font-sans: 'Noto Sans HK', -apple-system, BlinkMacSystemFont, 'PingFang HK', 'Microsoft JhengHei', sans-serif;
+}
+[lang='zh-cn'], [lang='zh-Hans-CN'], [lang='zh-Hans'] {
+  --ay-font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+[lang='ja'], [lang='ja-JP'] {
+  --ay-font-sans: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+}
+[lang='ko'], [lang='ko-KR'] {
+  --ay-font-sans: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+[lang='th'], [lang='th-TH'] {
+  --ay-font-sans: 'Sarabun', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* =======================================================================
+   Semantic type classes — mirror the Zeroheight Ark Design System spec.
+   Headings (H1–H6) 700. Sub-titles (M1–M2) 500. Body (P1–P3) 400.
+   Default color is fg-1 for headings/sub-titles, fg-2 for body.
+   ======================================================================= */
+.ay-h1 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h1); font-weight: 700; line-height: 1.25; letter-spacing: -0.005em; }
+.ay-h2 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h2); font-weight: 700; line-height: 1.3;  }
+.ay-h3 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h3); font-weight: 700; line-height: 1.35; }
+.ay-h4 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h4); font-weight: 700; line-height: 1.4;  }
+.ay-h5 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h5); font-weight: 700; line-height: 1.5;  }
+.ay-h6 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-h6); font-weight: 700; line-height: 1.55; }
+
+.ay-m1 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-m1); font-weight: 500; line-height: 1.5;  }
+.ay-m2 { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: var(--ay-fs-m2); font-weight: 500; line-height: 1.55; }
+
+.ay-p1 { font-family: var(--ay-font-sans); color: var(--ay-fg-2); font-size: var(--ay-fs-p1); font-weight: 400; line-height: 1.6;  }
+.ay-p2 { font-family: var(--ay-font-sans); color: var(--ay-fg-2); font-size: var(--ay-fs-p2); font-weight: 400; line-height: 1.6;  }
+.ay-p3 { font-family: var(--ay-font-sans); color: var(--ay-fg-3); font-size: var(--ay-fs-p3); font-weight: 400; line-height: 1.5;  }
+
+/* Legacy aliases kept so existing components don't break */
+.ay-body       { font-family: var(--ay-font-sans); color: var(--ay-fg-2); font-size: var(--ay-fs-p2); font-weight: 400; line-height: 20px; }
+.ay-body-lg    { font-family: var(--ay-font-sans); color: var(--ay-fg-2); font-size: var(--ay-fs-p1); font-weight: 400; line-height: 24px; }
+.ay-caption    { font-family: var(--ay-font-sans); color: var(--ay-fg-3); font-size: var(--ay-fs-p3); font-weight: 400; line-height: 16px; }
+.ay-title-desktop { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: 20px; font-weight: 700; line-height: 28px; }
+.ay-title-mobile  { font-family: var(--ay-font-sans); color: var(--ay-fg-1); font-size: 16px; font-weight: 500; line-height: 24px; }
+.ay-button-label  { font-family: var(--ay-font-sans); font-size: 14px; font-weight: 500; line-height: 20px; }
+.ay-mono { font-family: 'SFMono-Regular', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; line-height: 20px; color: var(--ay-fg-2); }
+
+/* Icon helper — use with the Ay- fonts */
+.ay-icon {
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+}
+/* Material Symbols Outlined is listed FIRST so in-sandbox rendering works.
+   In production you'd flip the order (or drop Material Symbols) so the
+   proprietary Ay icon fonts from img.asiayo.com take priority. */
+.ay-icon.ay-icon-line  { font-family: 'Material Symbols Outlined', 'Ay-Web-Icons-Line'  !important; }
+.ay-icon.ay-icon-solid { font-family: 'Material Symbols Outlined', 'Ay-Web-Icons-Solid' !important; font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.ay-icon.ay-icon-core  { font-family: 'Material Symbols Outlined', 'Ay-Icons'           !important; }
+</style>
+<style>/* AsiaYo icon font stylesheet — substitution layer
+   Real brand fonts (Ay-Icons · Ay-Web-Icons-Line · Ay-Web-Icons-Solid) live on
+   img.asiayo.com. We sub Material Symbols (Outlined) + a JS remap layer. */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,200..700,0..1,-50..200&display=swap');
+
+.ay-icon {
+  font-family: 'Material Symbols Outlined', system-ui, sans-serif;
+  font-weight: 400; font-style: normal; font-size: inherit;
+  display: inline-block; line-height: 1; text-transform: none;
+  letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  vertical-align: middle;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.ay-icon-solid { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,200..700,0..1,-50..200&display=swap');
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--ay-neutral-1); font-family: var(--ay-font-sans); color: var(--ay-fg-2); -webkit-font-smoothing: antialiased; }
+.ay-icon { font-family: 'Material Symbols Outlined', system-ui; font-weight: 400; display: inline-block; line-height: 1; vertical-align: middle; font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+img, svg { display: block; }
+button { font-family: inherit; }
+
+/* Header */
+.ay-header { background: #fff; border-bottom: 1px solid var(--ay-neutral-3); }
+.ay-header-inner { max-width: 1280px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 24px; }
+.ay-header img.logo { height: 28px; }
+.ay-header nav { display: flex; gap: 22px; }
+.ay-header nav a { font-size: 15px; color: var(--ay-fg-2); cursor: pointer; text-decoration: none; }
+.ay-header nav a.active { color: var(--ay-cp-primary-5); font-weight: 700; position: relative; }
+.ay-header nav a.active::after { content:''; position:absolute; left:0; right:0; bottom:-19px; height:2px; background: var(--ay-cp-primary-5); }
+.ay-header .spacer { flex: 1; }
+.ay-header .lang { font-size: 13px; color: var(--ay-fg-3); display: inline-flex; align-items: center; gap: 4px; }
+.ay-header .login { padding: 7px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; background: #fff; color: var(--ay-cp-primary-5); border: 1px solid var(--ay-cp-primary-5); font-weight: 500; }
+
+/* Compact search */
+.search-bar { background: #fff; border-bottom: 1px solid var(--ay-neutral-3); padding: 14px 0; box-shadow: 0 1px 4px rgba(0,0,0,.04); position: sticky; top: 0; z-index: 30; }
+.search-bar-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; gap: 8px; align-items: center; }
+.sb-field { flex: 1; padding: 10px 14px; border: 1px solid var(--ay-neutral-3); border-radius: 8px; cursor: pointer; min-width: 0; transition: border-color 150ms; display: flex; flex-direction: column; gap: 2px; }
+.sb-field:hover { border-color: var(--ay-cp-primary-5); }
+.sb-field .lbl { font-size: 11px; color: var(--ay-fg-3); display: inline-flex; align-items: center; gap: 4px; }
+.sb-field .lbl .ay-icon { font-size: 13px; color: var(--ay-cp-primary-5); }
+.sb-field .val { font-size: 14px; font-weight: 500; color: var(--ay-fg-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sb-cta { padding: 12px 28px; background: var(--ay-cp-primary-5); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 6px; }
+
+/* Breadcrumb */
+.crumb { max-width: 1280px; margin: 0 auto; padding: 14px 24px 0; font-size: 13px; color: var(--ay-fg-3); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.crumb a { color: var(--ay-fg-3); text-decoration: none; cursor: pointer; }
+.crumb a:hover { color: var(--ay-cp-primary-5); }
+.crumb .sep { color: var(--ay-neutral-4); }
+.crumb .cur { color: var(--ay-fg-1); font-weight: 500; }
+
+.page-title { max-width: 1280px; margin: 0 auto; padding: 4px 24px 16px; }
+.page-title .meta { display: inline-flex; align-items: center; gap: 16px; font-size: 13px; color: var(--ay-fg-2); flex-wrap: wrap; }
+.page-title .meta strong { color: var(--ay-cp-primary-6); font-weight: 700; }
+
+/* Layout */
+.layout { max-width: 1280px; margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: 260px 1fr; gap: 24px; }
+
+/* Filter sidebar */
+.filter-side { position: sticky; top: 120px; max-height: calc(100vh - 140px); overflow-y: auto; padding-right: 4px; }
+.filter-side::-webkit-scrollbar { width: 6px; }
+.filter-side::-webkit-scrollbar-thumb { background: var(--ay-neutral-3); border-radius: 3px; }
+.filter-card { background: #fff; border: 1px solid var(--ay-neutral-3); border-radius: 8px; margin-bottom: 12px; }
+.filter-card h4 { margin: 0; padding: 14px 16px 10px; font-size: 14px; font-weight: 700; color: var(--ay-fg-1); display: flex; align-items: center; justify-content: space-between; }
+.filter-card h4 .reset { font-size: 12px; color: var(--ay-cp-primary-5); cursor: pointer; font-weight: 500; }
+.filter-card .body { padding: 4px 16px 14px; }
+.filter-row { display: flex; align-items: center; padding: 6px 0; cursor: pointer; gap: 8px; font-size: 13px; color: var(--ay-fg-2); }
+.filter-row input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--ay-cp-primary-5); cursor: pointer; }
+.filter-row input[type=radio] { width: 16px; height: 16px; accent-color: var(--ay-cp-primary-5); cursor: pointer; }
+.filter-row:hover { color: var(--ay-cp-primary-5); }
+.filter-row .count { margin-left: auto; color: var(--ay-fg-3); font-size: 12px; }
+.range-row { padding: 8px 0; font-size: 12px; color: var(--ay-fg-3); display: flex; align-items: center; gap: 8px; }
+.range-row input { flex: 1; padding: 6px 8px; border: 1px solid var(--ay-neutral-3); border-radius: 4px; font-size: 13px; min-width: 0; }
+.tag-grp { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag-grp button { padding: 5px 10px; border-radius: 4px; border: 1px solid var(--ay-neutral-3); background: #fff; font-size: 12px; color: var(--ay-fg-2); cursor: pointer; }
+.tag-grp button.on { background: var(--ay-cp-primary-0); border-color: var(--ay-cp-primary-5); color: var(--ay-cp-primary-6); font-weight: 700; }
+
+/* Main content */
+.toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+.toolbar .count { font-size: 14px; color: var(--ay-fg-2); }
+.toolbar .count strong { color: var(--ay-fg-1); font-weight: 700; }
+.toolbar .right { display: flex; align-items: center; gap: 12px; }
+.sort-pills { display: flex; gap: 6px; }
+.sort-pill { padding: 6px 14px; font-size: 13px; color: var(--ay-fg-2); cursor: pointer; background: #fff; border: 1px solid var(--ay-neutral-3); border-radius: 100px; }
+.sort-pill.on { color: #fff; background: var(--ay-cp-primary-5); border-color: var(--ay-cp-primary-5); }
+.view-toggle { display: flex; border: 1px solid var(--ay-neutral-3); border-radius: 6px; overflow: hidden; }
+.view-toggle button { padding: 6px 10px; background: #fff; border: none; cursor: pointer; color: var(--ay-fg-3); }
+.view-toggle button.on { background: var(--ay-cp-primary-0); color: var(--ay-cp-primary-6); }
+
+/* Active filter pills */
+.active-pills { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
+.ap-label { font-size: 12px; color: var(--ay-fg-3); }
+.active-pills .pill { padding: 4px 10px; padding-right: 6px; font-size: 12px; color: var(--ay-cp-primary-6); background: var(--ay-cp-primary-0); border: 1px solid var(--ay-cp-primary-3); border-radius: 100px; display: inline-flex; align-items: center; gap: 4px; }
+.active-pills .pill button { background: transparent; border: none; cursor: pointer; color: var(--ay-cp-primary-6); padding: 0; display: flex; }
+.active-pills .clear-all { font-size: 12px; color: var(--ay-fg-3); cursor: pointer; background: none; border: none; text-decoration: underline; }
+
+/* List items */
+.list { display: flex; flex-direction: column; gap: 14px; }
+.list-card { background: #fff; border: 1px solid var(--ay-neutral-3); border-radius: 12px; overflow: hidden; cursor: pointer; display: grid; grid-template-columns: 280px 1fr 200px; transition: box-shadow 150ms; }
+.list-card:hover { box-shadow: var(--ay-shadow-raised); border-color: var(--ay-neutral-4); }
+.list-card .img { aspect-ratio: 4/3; background-size: cover; background-position: center; background-color: var(--ay-neutral-2); position: relative; }
+.list-card .ribbon { position: absolute; top: 12px; left: 12px; padding: 4px 10px; background: var(--ay-danger-5); color: #fff; font-size: 12px; font-weight: 700; border-radius: 4px; }
+.list-card .ribbon.warm { background: var(--ay-warning-5); }
+.list-card .ribbon.early { background: var(--ay-cp-primary-5); }
+.list-card .imgs-count { position: absolute; right: 10px; bottom: 10px; padding: 3px 8px; background: rgba(0,0,0,.55); color: #fff; font-size: 11px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px; }
+.list-card .body { padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.list-card .tags-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.list-card .tag { font-size: 11px; padding: 2px 8px; border-radius: 3px; background: var(--ay-neutral-1); color: var(--ay-fg-2); }
+.list-card .tag.hot { background: #fff3e6; color: #b04a00; }
+.list-card .tag.official { background: var(--ay-cp-primary-0); color: var(--ay-cp-primary-7); font-weight: 700; }
+.list-card h3 { margin: 0; font-size: 18px; font-weight: 700; color: var(--ay-fg-1); line-height: 1.4; }
+.list-card .info { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--ay-fg-2); }
+.list-card .info .row { display: inline-flex; align-items: center; gap: 4px; }
+.list-card .info .row .ay-icon { font-size: 14px; color: var(--ay-cp-primary-5); }
+.list-card .feats { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.list-card .feat { font-size: 12px; padding: 3px 9px; background: var(--ay-cp-primary-0); color: var(--ay-cp-primary-6); border-radius: 100px; }
+.list-card .price-side { padding: 18px 20px; border-left: 1px solid var(--ay-neutral-2); display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; gap: 8px; background: linear-gradient(180deg, #fff 0%, var(--ay-cp-primary-0) 100%); }
+.list-card .price-side .stock { font-size: 12px; color: var(--ay-warning-7); font-weight: 700; display: inline-flex; align-items: center; gap: 4px; }
+.list-card .price-side .from { font-size: 11px; color: var(--ay-fg-3); }
+.list-card .price-side .num { font-size: 26px; font-weight: 700; color: var(--ay-danger-5); line-height: 1; }
+.list-card .price-side .num small { font-size: 13px; color: var(--ay-fg-3); margin-right: 2px; font-weight: 500; }
+.list-card .price-side .unit { font-size: 11px; color: var(--ay-fg-3); }
+.list-card .price-side .strike { font-size: 12px; color: var(--ay-fg-3); text-decoration: line-through; }
+.list-card .price-side .cta { padding: 10px 20px; background: var(--ay-cp-primary-5); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 700; width: 100%; text-align: center; display: block; text-decoration: none; box-sizing: border-box; }
+.list-card .price-side .cta:hover { background: var(--ay-cp-primary-6); }
+
+/* Pagination */
+.pagination { display: flex; justify-content: center; gap: 6px; margin-top: 32px; align-items: center; }
+.pagination button { padding: 8px 14px; border: 1px solid var(--ay-neutral-3); background: #fff; border-radius: 6px; cursor: pointer; font-size: 14px; color: var(--ay-fg-2); min-width: 40px; }
+.pagination button.on { background: var(--ay-cp-primary-5); border-color: var(--ay-cp-primary-5); color: #fff; font-weight: 700; }
+.pagination button:disabled { opacity: .4; cursor: not-allowed; }
+
+@media (max-width: 900px) {
+  .ay-header nav { display: none; }
+  .layout { grid-template-columns: 1fr; }
+  .filter-side { position: static; max-height: none; }
+  .list-card { grid-template-columns: 1fr; }
+  .list-card .img { aspect-ratio: 16/9; }
+  .list-card .price-side { border-left: none; border-top: 1px solid var(--ay-neutral-2); flex-direction: row; align-items: center; }
+  .search-bar-inner { flex-wrap: wrap; }
+  .sb-field { flex: 1 1 calc(50% - 4px); min-width: 140px; }
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel">/* SEB List Page · 日本馬拉松 (region/9 · area/1) */
+const { useState } = React;
+
+const UNSPLASH = (id, w = 600) => `https://images.unsplash.com/photo-${id}?w=${w}&auto=format&fit=crop&q=70`;
+const Icon = ({ name, style, ...rest }) => (
+  <span className="ay-icon" style={{ fontSize: 18, ...style }} {...rest}>{name}</span>
+);
+
+// ============ DATA ============
+const RESULTS = [
+  {
+    title:'2026 富士山馬拉松 全馬 + 河口湖住宿 2 晚',
+    img:'1545569341-9eb8b30979d9',
+    loc:'山梨縣 富士河口湖町', date:'2026/12/13 (日)', dur:'5 天 4 夜',
+    distances:['全馬 42K','環湖路線'],
+    feats:['官方授權','含號碼布','機場接送','中文領隊','配速員'],
+    tags:[{lbl:'官方授權',cls:'official'},{lbl:'熱銷 NO.1',cls:'hot'},{lbl:'限額 30 名'}],
+    ribbon:'熱銷', ribbonKind:'',
+    price:'9,950', strike:'12,500', stock:'剩 8 名',
+  },
+  {
+    title:'札幌馬拉松 國際組 + 北海道 4 日',
+    img:'1571008887538-b36bb32f4571',
+    loc:'北海道 札幌市', date:'2026/10/04 (日)', dur:'4 天 3 夜',
+    distances:['半馬 21K','10K'],
+    feats:['官方授權','札幌市區飯店','晚餐 1 次'],
+    tags:[{lbl:'官方授權',cls:'official'},{lbl:'數量有限',cls:'hot'}],
+    ribbon:'數量有限', ribbonKind:'warm',
+    price:'8,560', strike:'9,800', stock:'剩 3 名',
+  },
+  {
+    title:'2027 東京馬拉松 全馬 + 東京 5 日（抽籤代辦）',
+    img:'1480796927426-f609979314bd',
+    loc:'東京都', date:'2027/03 待定', dur:'5 天 4 夜',
+    distances:['全馬 42K'],
+    feats:['抽籤代辦','銀座住宿','賽前 Expo'],
+    tags:[{lbl:'抽籤代辦',cls:'hot'},{lbl:'六大馬'}],
+    ribbon:'抽籤中', ribbonKind:'early',
+    price:'46,900', strike:null, stock:'抽籤制',
+  },
+  {
+    title:'2026 大阪馬拉松 全馬 + 道頓堀美食 4 日',
+    img:'1493780474015-ba834fd0ce2f',
+    loc:'大阪府 大阪市', date:'2026/02/22 (日)', dur:'4 天 3 夜',
+    distances:['全馬 42K'],
+    feats:['官方授權','心齋橋飯店','美食地圖'],
+    tags:[{lbl:'官方授權',cls:'official'},{lbl:'美食推薦'}],
+    ribbon:'', ribbonKind:'',
+    price:'21,800', strike:'25,500', stock:'剩 12 名',
+  },
+  {
+    title:'2026 京都馬拉松 全馬 + 古都 5 日',
+    img:'1545569341-9eb8b30979d9',
+    loc:'京都府 京都市', date:'2026/02/15 (日)', dur:'5 天 4 夜',
+    distances:['全馬 42K'],
+    feats:['抽籤代辦','嵐山飯店','古都導覽'],
+    tags:[{lbl:'抽籤代辦',cls:'hot'},{lbl:'文化體驗'}],
+    ribbon:'早鳥 -3000', ribbonKind:'early',
+    price:'24,500', strike:'27,500', stock:'抽籤制',
+  },
+  {
+    title:'湘南國際馬拉松 全馬 + 江之島 3 日',
+    img:'1571008887538-b36bb32f4571',
+    loc:'神奈川縣 大磯町', date:'2026/12/06 (日)', dur:'3 天 2 夜',
+    distances:['全馬 42K'],
+    feats:['官方授權','濱海路線','溫泉飯店'],
+    tags:[{lbl:'官方授權',cls:'official'},{lbl:'濱海路線'}],
+    ribbon:'', ribbonKind:'',
+    price:'15,800', strike:null, stock:'剩 18 名',
+  },
+];
+
+const REGIONS = [
+  { name:'關東 (東京 / 神奈川 / 千葉)', count: 24 },
+  { name:'關西 (大阪 / 京都 / 神戶)', count: 18 },
+  { name:'北海道 (札幌 / 函館)', count: 12 },
+  { name:'九州 (福岡 / 熊本)', count: 8 },
+  { name:'中部 (名古屋 / 富士山)', count: 14 },
+  { name:'東北 (仙台 / 山形)', count: 6 },
+];
+
+const PRICE_RANGES = [
+  { lbl:'NT$ 1 萬以下',     count: 18 },
+  { lbl:'NT$ 1 萬 - 2 萬',  count: 22 },
+  { lbl:'NT$ 2 萬 - 3 萬',  count: 16 },
+  { lbl:'NT$ 3 萬以上',     count: 12 },
+];
+
+const DEPARTURES = [
+  { lbl:'桃園機場 TPE', count: 48 },
+  { lbl:'松山機場 TSA', count: 28 },
+  { lbl:'高雄機場 KHH', count: 14 },
+  { lbl:'台中機場 RMQ', count: 8 },
+];
+
+const DURATIONS = [
+  { lbl:'3 天 2 夜以下', count: 12 },
+  { lbl:'4 天 3 夜',     count: 26 },
+  { lbl:'5 天 4 夜',     count: 18 },
+  { lbl:'6 天以上',      count: 8 },
+];
+
+const SPECIALS = [
+  { lbl:'官方授權通路', count: 42 },
+  { lbl:'含中文領隊',   count: 28 },
+  { lbl:'機場接送',     count: 36 },
+  { lbl:'抽籤代辦',     count: 14 },
+  { lbl:'含早餐',       count: 38 },
+  { lbl:'信用卡分期',   count: 64 },
+];
+
+const DISTANCE_TAGS = ['全馬 42K','半馬 21K','10K','迷你馬'];
+
+// ============ COMPONENTS ============
+const Header = () => (
+  <header className="ay-header">
+    <div className="ay-header-inner">
+      <img className="logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMjQwIDU2IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkFzaWFZbyI+CiAgPGcgZmlsbD0iIzI2MjYyNiIgZm9udC1mYW1pbHk9IiYjMzk7Tm90byBTYW5zIFRDJiMzOTssIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMzYiIGxldHRlci1zcGFjaW5nPSItMC4wMmVtIj4KICAgIDx0ZXh0IHg9IjAiIHk9IjQwIj5Bc2lhPC90ZXh0PgogICAgPHRleHQgeD0iOTIiIHk9IjQwIiBmaWxsPSIjMWU5ZmQyIj5ZbzwvdGV4dD4KICA8L2c+CiAgPGNpcmNsZSBjeD0iMTU4IiBjeT0iMTYiIHI9IjQiIGZpbGw9IiMxZTlmZDIiPjwvY2lyY2xlPgo8L3N2Zz4=" alt="AsiaYo" />
+      <nav>
+        <a>住宿</a>
+        <a>跟團旅遊</a>
+        <a>郵輪</a>
+        <a className="active">運動旅遊</a>
+        <a>景點行程</a>
+        <a>活動專區</a>
+      </nav>
+      <span className="spacer" />
+      <span className="lang"><Icon name="language" style={{fontSize:14}} />繁中 · TWD</span>
+      <button className="login">登入 / 註冊</button>
+    </div>
+  </header>
+);
+
+const SearchBar = () => (
+  <div className="search-bar">
+    <div className="search-bar-inner">
+      <div className="sb-field">
+        <span className="lbl"><Icon name="sports_score" />運動類型</span>
+        <span className="val">馬拉松</span>
+      </div>
+      <div className="sb-field">
+        <span className="lbl"><Icon name="location_on" />目的地 / 賽事</span>
+        <span className="val">日本</span>
+      </div>
+      <div className="sb-field">
+        <span className="lbl"><Icon name="event" />出發期間</span>
+        <span className="val">2026/04 - 2026/10</span>
+      </div>
+      <button className="sb-cta"><Icon name="search" style={{fontSize:18}} />搜尋</button>
+    </div>
+  </div>
+);
+
+const Crumb = () => (
+  <div className="crumb">
+    <a>首頁</a><Icon name="chevron_right" style={{fontSize:14, color:'var(--ay-neutral-4)'}} />
+    <a>運動旅遊</a><Icon name="chevron_right" style={{fontSize:14, color:'var(--ay-neutral-4)'}} />
+    <a>馬拉松</a><Icon name="chevron_right" style={{fontSize:14, color:'var(--ay-neutral-4)'}} />
+    <span className="cur">日本</span>
+  </div>
+);
+
+const PageTitle = () => (
+  <div className="page-title">
+    <div className="meta">
+      <span>共找到 <strong>82</strong> 個行程</span>
+      <span>·</span>
+      <span>出發月份 <strong>2026/04 – 2026/10</strong></span>
+    </div>
+  </div>
+);
+
+const FilterCard = ({ title, children, onReset }) => (
+  <div className="filter-card">
+    <h4>{title}{onReset && <span className="reset" onClick={onReset}>清除</span>}</h4>
+    <div className="body">{children}</div>
+  </div>
+);
+
+const FilterRow = ({ label, count, type='checkbox', name, checked, onChange }) => (
+  <label className="filter-row">
+    <input type={type} name={name} checked={!!checked} onChange={onChange} />
+    <span>{label}</span>
+    {count != null && <span className="count">{count}</span>}
+  </label>
+);
+
+const FilterSidebar = ({ filters, setFilters, distance, setDistance, priceMin, setPriceMin, priceMax, setPriceMax }) => {
+  const toggle = (group, lbl) => {
+    setFilters(f => {
+      const cur = new Set(f[group] || []);
+      cur.has(lbl) ? cur.delete(lbl) : cur.add(lbl);
+      return { ...f, [group]: [...cur] };
+    });
+  };
+  return (
+    <aside className="filter-side">
+      <FilterCard title="距離 / 組別">
+        <div className="tag-grp">
+          {DISTANCE_TAGS.map(d => (
+            <button key={d} className={distance.includes(d) ? 'on' : ''} onClick={()=>{
+              setDistance(distance.includes(d) ? distance.filter(x=>x!==d) : [...distance, d]);
+            }}>{d}</button>
+          ))}
+        </div>
+      </FilterCard>
+
+      <FilterCard title="特色">
+        {SPECIALS.map(s => (
+          <FilterRow key={s.lbl} label={s.lbl} count={s.count}
+            checked={filters.spec?.includes(s.lbl)}
+            onChange={()=>toggle('spec', s.lbl)} />
+        ))}
+      </FilterCard>
+    </aside>
+  );
+};
+
+const SORTS = [
+  { key:'recommend', lbl:'推薦排序' },
+  { key:'price-asc', lbl:'價格由低至高' },
+  { key:'date',      lbl:'出發日期' },
+  { key:'hot',       lbl:'熱門度' },
+];
+
+const ListCard = ({ ev }) => (
+  <div className="list-card">
+    <div className="img" style={{ backgroundImage: `url(${UNSPLASH(ev.img, 700)})` }}>
+      <span className="imgs-count"><Icon name="image" style={{fontSize:13}} />12</span>
+    </div>
+    <div className="body">
+      <h3>{ev.title}</h3>
+      <div className="info">
+        <span className="row"><Icon name="location_on" />{ev.loc}</span>
+        <span className="row"><Icon name="event" />{ev.date}</span>
+        <span className="row"><Icon name="schedule" />{ev.dur}</span>
+        <span className="row"><Icon name="directions_run" />{ev.distances.join(' / ')}</span>
+      </div>
+      <div className="feats">
+        {ev.feats.map((f,i) => <span key={i} className="feat">✓ {f}</span>)}
+      </div>
+    </div>
+    <div className="price-side">
+      <div style={{textAlign:'right'}}>
+        <div className="from">每人最低</div>
+        <div className="num"><small>NT$</small>{ev.price}</div>
+        <div className="unit">起</div>
+        {ev.strike && <div className="strike">原價 NT$ {ev.strike}</div>}
+      </div>
+      <a href="https://asiayo.com/zh-tw/activity/50531/" target="_blank" rel="noopener" className="cta">查看詳情</a>
+    </div>
+  </div>
+);
+
+function App() {
+  const [filters, setFilters] = useState({ spec:[] });
+  const [distance, setDistance] = useState([]);
+  const [priceMin, setPriceMin] = useState('');
+  const [priceMax, setPriceMax] = useState('');
+  const [sort, setSort] = useState('recommend');
+  const [view, setView] = useState('list');
+
+  const allActive = [
+    ...distance.map(d => ({ group:'distance', label:d })),
+    ...(filters.region||[]).map(d => ({ group:'region', label:d })),
+    ...(filters.price||[]).map(d => ({ group:'price', label:d })),
+    ...(filters.dep||[]).map(d => ({ group:'dep', label:d })),
+    ...(filters.dur||[]).map(d => ({ group:'dur', label:d })),
+    ...(filters.spec||[]).map(d => ({ group:'spec', label:d })),
+  ];
+
+  const removePill = (group, label) => {
+    if (group === 'distance') setDistance(distance.filter(x=>x!==label));
+    else setFilters(f => ({ ...f, [group]: (f[group]||[]).filter(x=>x!==label) }));
+  };
+
+  const clearAll = () => {
+    setFilters({ region:[], price:[], dep:[], dur:[], spec:[] });
+    setDistance([]); setPriceMin(''); setPriceMax('');
+  };
+
+  return (
+    <div data-screen-label="SEB List · 日本馬拉松">
+      <Header />
+      <SearchBar />
+      <Crumb />
+      <PageTitle />
+      <div className="layout">
+        <FilterSidebar
+          filters={filters} setFilters={setFilters}
+          distance={distance} setDistance={setDistance}
+          priceMin={priceMin} setPriceMin={setPriceMin}
+          priceMax={priceMax} setPriceMax={setPriceMax}
+        />
+        <main>
+          <div className="toolbar">
+            <div className="count">共 <strong>82</strong> 個行程，符合篩選 <strong>{6 - Math.min(allActive.length, 5)}</strong> 個</div>
+            <div className="right">
+              <div className="sort-pills">
+                {SORTS.map(s => (
+                  <button key={s.key} className={`sort-pill ${sort===s.key?'on':''}`} onClick={()=>setSort(s.key)}>{s.lbl}</button>
+                ))}
+              </div>
+              <div className="view-toggle">
+                <button className={view==='list'?'on':''} onClick={()=>setView('list')}><Icon name="view_list" style={{fontSize:18}} /></button>
+                <button className={view==='grid'?'on':''} onClick={()=>setView('grid')}><Icon name="grid_view" style={{fontSize:18}} /></button>
+              </div>
+            </div>
+          </div>
+
+          {allActive.length > 0 && (
+            <div className="active-pills">
+              <span className="ap-label">已套用：</span>
+              {allActive.map((p, i) => (
+                <span key={i} className="pill">
+                  {p.label}
+                  <button onClick={()=>removePill(p.group, p.label)}><Icon name="close" style={{fontSize:12}} /></button>
+                </span>
+              ))}
+              <button className="clear-all" onClick={clearAll}>清除全部</button>
+            </div>
+          )}
+
+          <div className="list">
+            {RESULTS.map((ev, i) => <ListCard key={i} ev={ev} />)}
+          </div>
+
+          <div className="pagination">
+            <button disabled><Icon name="chevron_left" style={{fontSize:18}} /></button>
+            <button className="on">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>...</button>
+            <button>14</button>
+            <button><Icon name="chevron_right" style={{fontSize:18}} /></button>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('app')).render(<App />);
+</script>
+</body>
+</html>
