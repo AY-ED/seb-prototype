@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<title>運動旅遊 v4 · AsiaYo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="ay/colors_and_type.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,200..700,0..1,-50..200&display=swap');
+  .ay-icon { font-family: 'Material Symbols Outlined', system-ui, sans-serif; font-weight: 400; font-style: normal; display: inline-block; line-height: 1; vertical-align: middle; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; -webkit-font-smoothing: antialiased; }
+  .ay-icon-solid { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { font-family: var(--ay-font-sans); color: var(--ay-fg-2); background: #fff; -webkit-font-smoothing: antialiased; }
+  input, textarea, button { font-family: inherit; }
+
+  /* Responsive design tokens — desktop default, tablet ≤ 1024, mobile ≤ 640 */
+  :root {
+    --seb-pad: 120px;          /* horizontal page padding */
+    --seb-cols: 3;             /* main event card grid (3 on desktop) */
+    --seb-cs-cols: 4;          /* coming-soon cards */
+    --seb-trust-cols: 4;       /* trust grid */
+    --seb-region-cols: 3;      /* region quick-pick */
+    --seb-footer-cols: 1.4fr 1fr 1fr 1fr;
+    --seb-banner-h: 320px;
+    --seb-banner-title: 44px;
+    --seb-banner-sub: 18px;
+  }
+  @media (max-width: 1280px) { :root { --seb-pad: 48px; } }
+  @media (max-width: 1024px) {
+    :root {
+      --seb-pad: 32px; --seb-cols: 2; --seb-cs-cols: 2;
+      --seb-trust-cols: 2; --seb-region-cols: 3;
+      --seb-footer-cols: 1fr 1fr;
+      --seb-banner-h: 260px;
+      --seb-banner-title: 32px;
+      --seb-banner-sub: 16px;
+    }
+  }
+  @media (max-width: 640px) {
+    :root {
+      --seb-pad: 16px; --seb-cols: 1; --seb-cs-cols: 1;
+      --seb-trust-cols: 2; --seb-region-cols: 1;
+      --seb-footer-cols: 1fr;
+      --seb-banner-h: 200px;
+      --seb-banner-title: 24px;
+      --seb-banner-sub: 13px;
+    }
+  }
+  @media (max-width: 1024px) { .seb-hide-tablet { display: none !important; } }
+  @media (max-width: 640px)  { .seb-hide-mobile { display: none !important; } }
+
+  /* Banner */
+  .seb-banner-arrow:hover { background: #fff !important; box-shadow: 0 4px 8px rgba(0,0,0,.12) !important; }
+  .seb-banner-dot { transition: all 200ms; }
+
+  /* Tabs */
+  .seb-main-tab { transition: color 150ms, background 150ms, border-color 150ms; }
+  .seb-main-tab:hover { color: var(--ay-cp-primary-5); }
+  .seb-region-pill { transition: all 150ms; }
+  .seb-region-pill:hover { border-color: var(--ay-cp-primary-5); color: var(--ay-cp-primary-5); }
+  .seb-chip { transition: all 150ms; user-select: none; }
+  .seb-chip:hover { border-color: var(--ay-cp-primary-5); }
+  .seb-tab-scroller::-webkit-scrollbar { display: none; }
+
+  /* Card */
+  .seb-card { transition: box-shadow 200ms, transform 200ms; }
+  .seb-card:hover { box-shadow: 0 8px 16px rgba(0,0,0,.10); transform: translateY(-2px); }
+  .seb-card-soldout { filter: saturate(.4); }
+
+  .seb-faq-item { transition: background 150ms; }
+  .seb-faq-item:hover { background: var(--ay-neutral-1); }
+
+  /* fade-in for filtered results */
+  @keyframes seb-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .seb-fade-in { animation: seb-fade-in 240ms ease both; }
+
+  /* Image placeholders */
+  .seb-img {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .seb-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.35) 100%);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body data-ay-theme="cp">
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="ay/Primitives.jsx"></script>
+<script type="text/babel" src="seb-v4/data.jsx"></script>
+<script type="text/babel" src="seb-v4/SiteChrome.jsx"></script>
+<script type="text/babel" src="seb-v4/Banner.jsx"></script>
+<script type="text/babel" src="seb-v4/FilterBar.jsx"></script>
+<script type="text/babel" src="seb-v4/EventCard.jsx"></script>
+<script type="text/babel" src="seb-v4/SectionGrid.jsx"></script>
+<script type="text/babel" src="seb-v4/Sections.jsx"></script>
+<script type="text/babel" src="seb-v4/App.jsx"></script>
+
+</body>
+</html>
